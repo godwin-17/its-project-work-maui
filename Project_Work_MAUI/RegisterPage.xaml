@@ -6,7 +6,15 @@
              >
 
     <Grid RowDefinitions="1*,8*,1*">
+        <Grid.Background>
+            <LinearGradientBrush>
+                <GradientStop Color="#00ffff" Offset="0.1" />
+                <GradientStop Color="lime" Offset="1.0" />
+            </LinearGradientBrush>
+        </Grid.Background>
+
         <Frame BackgroundColor="LightGreen" Grid.Row="0" HorizontalOptions="EndAndExpand"
+               BorderColor="LightGreen"
                Padding="0"
                Margin="0, -60, -60, 0"
                HeightRequest="250"
@@ -16,6 +24,7 @@
         </Frame>
 
         <Frame BackgroundColor="{x:StaticResource Primary}" Grid.Row="0" HorizontalOptions="EndAndExpand"
+               BorderColor="{x:StaticResource Primary}"
                Padding="0"
                Margin="0, -100, -100, 0"
                HeightRequest="250"
@@ -77,23 +86,25 @@
         </Frame>
 
 
-        <Frame BackgroundColor="LightGreen" Grid.Row="2" 
-                VerticalOptions="EndAndExpand"
+        <Frame BackgroundColor="#00ffff" Grid.Row="2" 
+               BorderColor="#00ffff"
+               VerticalOptions="EndAndExpand"
                HorizontalOptions="StartAndExpand"
                Padding="0"
-               Margin="0, 0, 0, -180"
+               Margin="-60, 0, 0, -110"
                HeightRequest="250"
                WidthRequest="250"
                CornerRadius="125">
 
         </Frame>
 
-        <Frame BackgroundColor="{x:StaticResource Primary}" 
+        <Frame BackgroundColor="#008080" 
+               BorderColor="#008080"
                Grid.Row="2" 
                VerticalOptions="EndAndExpand"
                HorizontalOptions="StartAndExpand"
                Padding="0"
-               Margin="0, 0, 0, -200"
+               Margin="-60, 0, 0, -150"
                HeightRequest="250"
                WidthRequest="250"
                CornerRadius="125">
