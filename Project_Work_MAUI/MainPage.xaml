@@ -6,6 +6,7 @@
              >
 
     <Grid RowDefinitions="1*,8*,1*">
+
         <Frame BackgroundColor="LightGreen" Grid.Row="0" HorizontalOptions="EndAndExpand"
                Padding="0"
                Margin="0, -60, -60, 0"
@@ -48,6 +49,9 @@
                 <HorizontalStackLayout Spacing="10">
                     <Label FontAttributes="Bold" Text="Non hai un account?" VerticalTextAlignment="Center"/>
                     <Label FontAttributes="Bold" Text="Registrati" FontSize="18" TextColor="{x:StaticResource Primary}"/>
+                    <HorizontalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                    </HorizontalStackLayout.GestureRecognizers>
                 </HorizontalStackLayout>
             </VerticalStackLayout>
         </Frame>
