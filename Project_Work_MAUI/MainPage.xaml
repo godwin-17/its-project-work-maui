@@ -18,16 +18,16 @@
             </LinearGradientBrush>
         </Grid.Background>
 
+  
+        <Image Source="bbank_writing_logo.png" HorizontalOptions="Center"  Margin="0, 380, 0, 0" WidthRequest="280" HeightRequest="52"/>
+
         <Frame BackgroundColor="LightGreen" Grid.Row="0" HorizontalOptions="EndAndExpand"
                BorderColor="LightGreen"
                Padding="0"
                Margin="0, -60, -60, 0"
                HeightRequest="250"
                WidthRequest="250"
-               CornerRadius="125"
-               
-               >
-
+               CornerRadius="125">
         </Frame>
 
         <Frame BackgroundColor="{x:StaticResource Primary}" Grid.Row="0" HorizontalOptions="EndAndExpand"
@@ -37,7 +37,6 @@
                HeightRequest="250"
                WidthRequest="250"
                CornerRadius="125">
-
         </Frame>
 
         <Frame Grid.Row="1" VerticalOptions="CenterAndExpand" BackgroundColor="#fff" Margin="15, 0, 15, 0">
@@ -81,7 +80,6 @@
                HeightRequest="250"
                WidthRequest="250"
                CornerRadius="125">
-
         </Frame>
 
         <Frame BackgroundColor="#008b8b" 
@@ -94,7 +92,6 @@
                HeightRequest="250"
                WidthRequest="250"
                CornerRadius="125">
-
         </Frame>
     </Grid>
 </ContentPage>

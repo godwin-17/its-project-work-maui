@@ -50,6 +50,7 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Images\bbank_logo.png" />
+	  <None Remove="Resources\Images\bbank_writing_logo.png" />
 	  <None Remove="Resources\Images\key.png" />
 	  <None Remove="Resources\Images\mail.png" />
 	  <None Remove="Resources\Images\user.png" />
