@@ -1,14 +1,9 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             xmlns:mct="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
-             x:Class="Project_Work_MAUI.MainPage"
+             x:Class="Project_Work_MAUI.RegisterPage"
              Shell.NavBarIsVisible="False"
              >
-    <Page.Behaviors>
-        <mct:StatusBarBehavior StatusBarColor="#3A9E3E"/>
-    </Page.Behaviors>
 
     <Grid RowDefinitions="1*,8*,1*">
         <Grid.Background>
@@ -24,9 +19,7 @@
                Margin="0, -60, -60, 0"
                HeightRequest="250"
                WidthRequest="250"
-               CornerRadius="125"
-               
-               >
+               CornerRadius="125">
 
         </Frame>
 
@@ -43,7 +36,21 @@
         <Frame Grid.Row="1" VerticalOptions="CenterAndExpand" BackgroundColor="#fff" Margin="15, 0, 15, 0">
 
             <VerticalStackLayout Spacing="25">
-                <Label Text="Login" FontSize="28" FontAttributes="Bold"/>
+                <Label Text="Registrazione" FontSize="28" FontAttributes="Bold"/>
+
+                <Frame Padding="10" BorderColor="Transparent" CornerRadius="0" >
+                    <Grid ColumnDefinitions="25,*" ColumnSpacing="20">
+                        <Image VerticalOptions="Center" Source="user.png" HeightRequest="25" WidthRequest="25" />
+                        <Entry VerticalOptions="Center" Placeholder="Nome Titolare" Grid.Column="1"/>
+                    </Grid>
+                </Frame>
+
+                <Frame Padding="10" BorderColor="Transparent" CornerRadius="0" >
+                    <Grid ColumnDefinitions="25,*" ColumnSpacing="20">
+                        <Image VerticalOptions="Center" Source="user.png" HeightRequest="25" WidthRequest="25" />
+                        <Entry VerticalOptions="Center" Placeholder="Cognome Titolare" Grid.Column="1"/>
+                    </Grid>
+                </Frame>
 
                 <Frame Padding="10" BorderColor="Transparent" CornerRadius="0" >
                     <Grid ColumnDefinitions="25,*" ColumnSpacing="20">
@@ -59,38 +66,45 @@
                     </Grid>
                 </Frame>
 
-                <Button Text="Login" FontSize="20" FontAttributes="Bold" />
+                <Frame Padding="10" BorderColor="Transparent" CornerRadius="0" >
+                    <Grid ColumnDefinitions="25,*" ColumnSpacing="20">
+                        <Image VerticalOptions="Center" Source="key.png" HeightRequest="25" WidthRequest="25" />
+                        <Entry VerticalOptions="Center" Placeholder="Conferma Password" IsPassword="True" Grid.Column="1"/>
+                    </Grid>
+                </Frame>
 
+                <Button Text="Registrati" FontSize="20" FontAttributes="Bold" />
+ 
                 <HorizontalStackLayout Spacing="10">
-                    <Label FontAttributes="Bold" Text="Non hai un account?" VerticalTextAlignment="Center"/>
-                    <Label FontAttributes="Bold" Text="Registrati" FontSize="18" TextColor="{x:StaticResource Primary}"/>
+                    <Label FontAttributes="Bold" Text="Hai già un account?" VerticalTextAlignment="Center"/>
+                    <Label FontAttributes="Bold" Text="Fai il login" FontSize="18" TextColor="{x:StaticResource Primary}"/>
                     <HorizontalStackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
                     </HorizontalStackLayout.GestureRecognizers>
                 </HorizontalStackLayout>
             </VerticalStackLayout>
         </Frame>
 
 
-        <Frame BackgroundColor="#00ffff" Grid.Row="2"
+        <Frame BackgroundColor="#00ffff" Grid.Row="2" 
                BorderColor="#00ffff"
                VerticalOptions="EndAndExpand"
                HorizontalOptions="StartAndExpand"
                Padding="0"
-               Margin="-60, 0, 0, -60"
+               Margin="-60, 0, 0, -110"
                HeightRequest="250"
                WidthRequest="250"
                CornerRadius="125">
 
         </Frame>
 
-        <Frame BackgroundColor="#008b8b" 
-               BorderColor="#008b8b"
+        <Frame BackgroundColor="#008080" 
+               BorderColor="#008080"
                Grid.Row="2" 
                VerticalOptions="EndAndExpand"
                HorizontalOptions="StartAndExpand"
                Padding="0"
-               Margin="-100, 0, 0, -100"
+               Margin="-60, 0, 0, -150"
                HeightRequest="250"
                WidthRequest="250"
                CornerRadius="125">
