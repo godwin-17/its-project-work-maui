@@ -50,6 +50,7 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Images\bbank_logo.png" />
+	  <None Remove="Resources\Images\bbank_writing_logo.png" />
 	  <None Remove="Resources\Images\key.png" />
 	  <None Remove="Resources\Images\mail.png" />
 	  <None Remove="Resources\Images\user.png" />
@@ -59,6 +60,7 @@
 		<PackageReference Include="CommunityToolkit.Maui" Version="5.3.0" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.1" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 	</ItemGroup>
 
 	<ItemGroup>
