@@ -8,9 +8,59 @@ namespace Project_Work_MAUI
     {
         private string Email;
         private string Password;
+        private bool timerExpired;
+        private bool pageDisappearing;
+
         public MainPage()
         {
             InitializeComponent();
+        }
+
+        private void StartTimer()
+        {
+            timerExpired = false;
+            bool showAlert = true;
+
+            this.Dispatcher.StartTimer(TimeSpan.FromSeconds(5), () =>
+            {
+                if (pageDisappearing)
+                {
+                    return false;
+                }
+
+                timerExpired = true;
+                if (showAlert)
+                {
+                    this.Dispatcher.Dispatch(async () =>
+                    {
+                        showAlert = false;
+                        await DisplayAlert("Timeout", "Il tempo per fare il login è scaduto. Perfavore riprova.", "OK");
+                        ClearInputs();
+                        StartTimer();
+                    });
+                }
+                return false;
+            });
+        }
+
+        private void ClearInputs()
+        {
+            EmailEntry.Text = string.Empty;
+            PasswordEntry.Text = string.Empty;
+            timerExpired = false;
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            pageDisappearing = true;
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            pageDisappearing = false;
+            StartTimer();
         }
 
         private async void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
