@@ -21,7 +21,7 @@ namespace Project_Work_MAUI
             timerExpired = false;
             bool showAlert = true;
 
-            this.Dispatcher.StartTimer(TimeSpan.FromSeconds(5), () =>
+            this.Dispatcher.StartTimer(TimeSpan.FromSeconds(30), () =>
             {
                 if (pageDisappearing)
                 {
