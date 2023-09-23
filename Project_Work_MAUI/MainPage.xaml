@@ -42,7 +42,7 @@
         <Frame Grid.Row="1" VerticalOptions="CenterAndExpand" BackgroundColor="#fff" Margin="15, 0, 15, 0">
 
             <VerticalStackLayout Spacing="25">
-                <Label Text="Login" FontSize="28" FontAttributes="Bold"/>
+                <Label Text="Login" TextColor="Black" FontSize="28" FontAttributes="Bold"/>
 
                 <Frame Padding="10" BorderColor="Transparent" CornerRadius="0" >
                     <Grid ColumnDefinitions="25,*" ColumnSpacing="20">
@@ -58,10 +58,10 @@
                     </Grid>
                 </Frame>
 
-                <Button Text="Login" FontSize="20" FontAttributes="Bold" Clicked="Login_Clicked"/>
+                <Button Text="Login" TextColor="#fff" FontSize="20" FontAttributes="Bold" BackgroundColor="{x:StaticResource Primary}"  Clicked="Login_Clicked"/>
 
                 <HorizontalStackLayout Spacing="10">
-                    <Label FontAttributes="Bold" Text="Non hai un account?" VerticalTextAlignment="Center"/>
+                    <Label FontAttributes="Bold" Text="Non hai un account?" TextColor="Black" VerticalTextAlignment="Center"/>
                     <Label FontAttributes="Bold" Text="Registrati" FontSize="18" TextColor="{x:StaticResource Primary}"/>
                     <HorizontalStackLayout.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
