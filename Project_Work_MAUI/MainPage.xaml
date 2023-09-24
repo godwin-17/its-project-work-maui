@@ -2,6 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:viewmodel="clr-namespace:Project_Work_MAUI.ViewModels"
+             x:DataType="viewmodel:MainViewModel"
              xmlns:mct="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
              x:Class="Project_Work_MAUI.MainPage"
              Shell.NavBarIsVisible="False"
@@ -47,24 +49,24 @@
                 <Frame Padding="10" BorderColor="Transparent" CornerRadius="0" >
                     <Grid ColumnDefinitions="25,*" ColumnSpacing="20">
                         <Image VerticalOptions="Center" Source="mail.png" HeightRequest="25" WidthRequest="25" />
-                        <Entry x:Name="EmailEntry" VerticalOptions="Center" Placeholder="Email" Grid.Column="1"/>
+                        <Entry Text="{Binding Email}" TextColor="Black" VerticalOptions="Center" Placeholder="Email" Grid.Column="1"/>
                     </Grid>
                 </Frame>
 
                 <Frame Padding="10" BorderColor="Transparent" CornerRadius="0" >
                     <Grid ColumnDefinitions="25,*" ColumnSpacing="20">
                         <Image VerticalOptions="Center" Source="key.png" HeightRequest="25" WidthRequest="25" />
-                        <Entry x:Name="PasswordEntry" VerticalOptions="Center" Placeholder="Password" IsPassword="True" Grid.Column="1"/>
+                        <Entry Text="{Binding Password}" TextColor="Black" VerticalOptions="Center" Placeholder="Password" IsPassword="True" Grid.Column="1"/>
                     </Grid>
                 </Frame>
 
-                <Button Text="Login" TextColor="#fff" FontSize="20" FontAttributes="Bold" BackgroundColor="{x:StaticResource Primary}"  Clicked="Login_Clicked"/>
+                <Button Text="Login" Command="{Binding LoginCommand}" TextColor="#fff" FontSize="20" FontAttributes="Bold" BackgroundColor="{x:StaticResource Primary}" />
 
                 <HorizontalStackLayout Spacing="10">
                     <Label FontAttributes="Bold" Text="Non hai un account?" TextColor="Black" VerticalTextAlignment="Center"/>
                     <Label FontAttributes="Bold" Text="Registrati" FontSize="18" TextColor="{x:StaticResource Primary}"/>
                     <HorizontalStackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                        <TapGestureRecognizer  Command="{Binding TapRegisterCommand}" />
                     </HorizontalStackLayout.GestureRecognizers>
                 </HorizontalStackLayout>
             </VerticalStackLayout>
