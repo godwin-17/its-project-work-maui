@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:Project_Work_MAUI.ViewModels"
+             x:DataType="viewmodel:RegisterViewModel"
              x:Class="Project_Work_MAUI.RegisterPage"
              Shell.NavBarIsVisible="False"
              >
@@ -41,45 +43,45 @@
                 <Frame Padding="10" BorderColor="Transparent" CornerRadius="0" >
                     <Grid ColumnDefinitions="25,*" ColumnSpacing="20">
                         <Image VerticalOptions="Center" Source="user.png" HeightRequest="25" WidthRequest="25" />
-                        <Entry x:Name="NomeTitoloareEntry" VerticalOptions="Center" Placeholder="Nome Titolare" Grid.Column="1"/>
+                        <Entry x:Name="NomeTitoloareEntry" Text="{Binding Name}"  TextColor="Black" VerticalOptions="Center" Placeholder="Nome Titolare" Grid.Column="1"/>
                     </Grid>
                 </Frame>
 
                 <Frame Padding="10" BorderColor="Transparent" CornerRadius="0" >
                     <Grid ColumnDefinitions="25,*" ColumnSpacing="20">
                         <Image VerticalOptions="Center" Source="user.png" HeightRequest="25" WidthRequest="25" />
-                        <Entry x:Name="CognomeTitolareEntry" VerticalOptions="Center"  Placeholder="Cognome Titolare" Grid.Column="1"/>
+                        <Entry x:Name="CognomeTitolareEntry" Text="{Binding Surname}"  TextColor="Black" VerticalOptions="Center"  Placeholder="Cognome Titolare" Grid.Column="1"/>
                     </Grid>
                 </Frame>
 
                 <Frame Padding="10" BorderColor="Transparent" CornerRadius="0" >
                     <Grid ColumnDefinitions="25,*" ColumnSpacing="20">
                         <Image VerticalOptions="Center" Source="mail.png" HeightRequest="25" WidthRequest="25" />
-                        <Entry x:Name="EmailEntry" VerticalOptions="Center" Placeholder="Email" Grid.Column="1"/>
+                        <Entry x:Name="EmailEntry" Text="{Binding Email}" TextColor="Black" VerticalOptions="Center" Placeholder="Email" Grid.Column="1"/>
                     </Grid>
                 </Frame>
 
                 <Frame Padding="10" BorderColor="Transparent" CornerRadius="0" >
                     <Grid ColumnDefinitions="25,*" ColumnSpacing="20">
                         <Image VerticalOptions="Center" Source="key.png" HeightRequest="25" WidthRequest="25" />
-                        <Entry x:Name="PasswordEntry" VerticalOptions="Center" Placeholder="Password" IsPassword="True" Grid.Column="1"/>
+                        <Entry x:Name="PasswordEntry" Text="{Binding Password}" TextColor="Black" VerticalOptions="Center" Placeholder="Password" IsPassword="True" Grid.Column="1"/>
                     </Grid>
                 </Frame>
 
                 <Frame Padding="10" BorderColor="Transparent" CornerRadius="0" >
                     <Grid ColumnDefinitions="25,*" ColumnSpacing="20">
                         <Image VerticalOptions="Center" Source="key.png" HeightRequest="25" WidthRequest="25" />
-                        <Entry x:Name="ConfermaPasswordEntry" VerticalOptions="Center" Placeholder="Conferma Password" IsPassword="True" Grid.Column="1"/>
+                        <Entry x:Name="ConfermaPasswordEntry" Text="{Binding ConfirmPassword}" TextColor="Black" VerticalOptions="Center" Placeholder="Conferma Password" IsPassword="True" Grid.Column="1"/>
                     </Grid>
                 </Frame>
 
-                <Button x:Name="RegistratiButton" BackgroundColor="{x:StaticResource Primary}" Text="Registrati" TextColor="#fff" FontSize="20" FontAttributes="Bold" Clicked="Registrazione_Clicked"/>
+                <Button x:Name="RegistratiButton" Command="{Binding RegisterCommand}" BackgroundColor="{x:StaticResource Primary}" Text="Registrati" TextColor="#fff" FontSize="20" FontAttributes="Bold" />
  
                 <HorizontalStackLayout Spacing="10">
                     <Label FontAttributes="Bold" Text="Hai già un account?" TextColor="Black" VerticalTextAlignment="Center"/>
                     <Label FontAttributes="Bold" Text="Fai il login" FontSize="18" TextColor="{x:StaticResource Primary}"/>
                     <HorizontalStackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                        <TapGestureRecognizer Command="{Binding TapLoginCommand}"></TapGestureRecognizer>
                     </HorizontalStackLayout.GestureRecognizers>
                 </HorizontalStackLayout>
             </VerticalStackLayout>
