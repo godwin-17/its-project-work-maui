@@ -49,14 +49,14 @@
                 <Frame Padding="10" BorderColor="Transparent" CornerRadius="0" >
                     <Grid ColumnDefinitions="25,*" ColumnSpacing="20">
                         <Image VerticalOptions="Center" Source="mail.png" HeightRequest="25" WidthRequest="25" />
-                        <Entry x:Name="EmailEntry" Text="{Binding Email}" TextColor="Black" VerticalOptions="Center" Placeholder="Email" Grid.Column="1"/>
+                        <Entry Text="{Binding Email}" TextColor="Black" VerticalOptions="Center" Placeholder="Email" Grid.Column="1"/>
                     </Grid>
                 </Frame>
 
                 <Frame Padding="10" BorderColor="Transparent" CornerRadius="0" >
                     <Grid ColumnDefinitions="25,*" ColumnSpacing="20">
                         <Image VerticalOptions="Center" Source="key.png" HeightRequest="25" WidthRequest="25" />
-                        <Entry x:Name="PasswordEntry" Text="{Binding Password}" TextColor="Black" VerticalOptions="Center" Placeholder="Password" IsPassword="True" Grid.Column="1"/>
+                        <Entry Text="{Binding Password}" TextColor="Black" VerticalOptions="Center" Placeholder="Password" IsPassword="True" Grid.Column="1"/>
                     </Grid>
                 </Frame>
 

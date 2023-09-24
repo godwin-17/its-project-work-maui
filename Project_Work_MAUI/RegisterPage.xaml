@@ -43,39 +43,39 @@
                 <Frame Padding="10" BorderColor="Transparent" CornerRadius="0" >
                     <Grid ColumnDefinitions="25,*" ColumnSpacing="20">
                         <Image VerticalOptions="Center" Source="user.png" HeightRequest="25" WidthRequest="25" />
-                        <Entry x:Name="NomeTitoloareEntry" Text="{Binding Name}"  TextColor="Black" VerticalOptions="Center" Placeholder="Nome Titolare" Grid.Column="1"/>
+                        <Entry Text="{Binding Name}"  TextColor="Black" VerticalOptions="Center" Placeholder="Nome Titolare" Grid.Column="1"/>
                     </Grid>
                 </Frame>
 
                 <Frame Padding="10" BorderColor="Transparent" CornerRadius="0" >
                     <Grid ColumnDefinitions="25,*" ColumnSpacing="20">
                         <Image VerticalOptions="Center" Source="user.png" HeightRequest="25" WidthRequest="25" />
-                        <Entry x:Name="CognomeTitolareEntry" Text="{Binding Surname}"  TextColor="Black" VerticalOptions="Center"  Placeholder="Cognome Titolare" Grid.Column="1"/>
+                        <Entry Text="{Binding Surname}"  TextColor="Black" VerticalOptions="Center"  Placeholder="Cognome Titolare" Grid.Column="1"/>
                     </Grid>
                 </Frame>
 
                 <Frame Padding="10" BorderColor="Transparent" CornerRadius="0" >
                     <Grid ColumnDefinitions="25,*" ColumnSpacing="20">
                         <Image VerticalOptions="Center" Source="mail.png" HeightRequest="25" WidthRequest="25" />
-                        <Entry x:Name="EmailEntry" Text="{Binding Email}" TextColor="Black" VerticalOptions="Center" Placeholder="Email" Grid.Column="1"/>
+                        <Entry Text="{Binding Email}" TextColor="Black" VerticalOptions="Center" Placeholder="Email" Grid.Column="1"/>
                     </Grid>
                 </Frame>
 
                 <Frame Padding="10" BorderColor="Transparent" CornerRadius="0" >
                     <Grid ColumnDefinitions="25,*" ColumnSpacing="20">
                         <Image VerticalOptions="Center" Source="key.png" HeightRequest="25" WidthRequest="25" />
-                        <Entry x:Name="PasswordEntry" Text="{Binding Password}" TextColor="Black" VerticalOptions="Center" Placeholder="Password" IsPassword="True" Grid.Column="1"/>
+                        <Entry Text="{Binding Password}" TextColor="Black" VerticalOptions="Center" Placeholder="Password" IsPassword="True" Grid.Column="1"/>
                     </Grid>
                 </Frame>
 
                 <Frame Padding="10" BorderColor="Transparent" CornerRadius="0" >
                     <Grid ColumnDefinitions="25,*" ColumnSpacing="20">
                         <Image VerticalOptions="Center" Source="key.png" HeightRequest="25" WidthRequest="25" />
-                        <Entry x:Name="ConfermaPasswordEntry" Text="{Binding ConfirmPassword}" TextColor="Black" VerticalOptions="Center" Placeholder="Conferma Password" IsPassword="True" Grid.Column="1"/>
+                        <Entry Text="{Binding ConfirmPassword}" TextColor="Black" VerticalOptions="Center" Placeholder="Conferma Password" IsPassword="True" Grid.Column="1"/>
                     </Grid>
                 </Frame>
 
-                <Button x:Name="RegistratiButton" Command="{Binding RegisterCommand}" BackgroundColor="{x:StaticResource Primary}" Text="Registrati" TextColor="#fff" FontSize="20" FontAttributes="Bold" />
+                <Button Command="{Binding RegisterCommand}" BackgroundColor="{x:StaticResource Primary}" Text="Registrati" TextColor="#fff" FontSize="20" FontAttributes="Bold" />
  
                 <HorizontalStackLayout Spacing="10">
                     <Label FontAttributes="Bold" Text="Hai già un account?" TextColor="Black" VerticalTextAlignment="Center"/>
