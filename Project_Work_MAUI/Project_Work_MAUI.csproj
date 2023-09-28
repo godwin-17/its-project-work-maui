@@ -51,9 +51,12 @@
 	<ItemGroup>
 	  <None Remove="Resources\Images\bbank_logo.png" />
 	  <None Remove="Resources\Images\bbank_writing_logo.png" />
+	  <None Remove="Resources\Images\gradient_bg.jpg" />
 	  <None Remove="Resources\Images\key.png" />
+	  <None Remove="Resources\Images\light_blue.jpg" />
 	  <None Remove="Resources\Images\mail.png" />
 	  <None Remove="Resources\Images\user.png" />
+	  <None Remove="Resources\Images\white.jpg" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -65,12 +68,21 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="TransazioniPage.xaml.cs">
+	    <DependentUpon>TransazioniPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="RegisterPage.xaml.cs">
 	    <DependentUpon>RegisterPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="TransazioniPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="DetailsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="HomePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
