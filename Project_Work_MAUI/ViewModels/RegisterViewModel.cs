@@ -70,7 +70,7 @@ namespace Project_Work_MAUI.ViewModels
         {
             using (HttpClient client = new HttpClient())
             {
-                string apiURL = "http://192.168.40.45:8080/api/register";
+                string apiURL = "https://bbankapidaniel.azurewebsites.net/api/register";
 
                 RegisterData registerData = new RegisterData
                 {

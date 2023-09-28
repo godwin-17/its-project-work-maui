@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Newtonsoft.Json;
 using Project_Work_MAUI.Models;
 using System.Net.Http.Headers;
@@ -44,7 +45,7 @@ namespace Project_Work_MAUI.ViewModels
                 using (HttpClient client = new HttpClient())
                 {
                     // Di default restituisce 5 movimenti
-                    string apiUrl = "http://192.168.40.45:8080/api/transaction/research";
+                    string apiUrl = "https://bbankapidaniel.azurewebsites.net/api/transaction/research";
 
 
                     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", TokenProvider.Token);
@@ -90,7 +91,7 @@ namespace Project_Work_MAUI.ViewModels
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    string apiUrl = "http://192.168.40.45:8080/api/users/balance";
+                    string apiUrl = "https://bbankapidaniel.azurewebsites.net/api/users/balance";
 
 
                     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", TokenProvider.Token);
