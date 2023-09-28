@@ -2,60 +2,80 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodel="clr-namespace:Project_Work_MAUI.ViewModels"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:mct="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
              x:Class="Project_Work_MAUI.HomePage"
              Shell.NavBarIsVisible="True"
              Title="Homepage"
              >
-    <VerticalStackLayout BackgroundColor="LightGrey"
-                         Padding="40, 20">
-        <Label 
-            Text="{Binding User.user.firstName, StringFormat=Benvenuto {0}}"
-            TextColor="#000"
-            VerticalOptions="Center" 
-            FontSize="25"
-            />
 
-        <Frame Margin="0, 40" Padding="40, 40" BorderColor="Transparent">
-            <Frame.Background>
-                <LinearGradientBrush>
-                    <GradientStop Color="#00ffff" Offset="0.1" />
-                    <GradientStop Color="lime" Offset="1.0" />
-                </LinearGradientBrush>
-            </Frame.Background>
-            <VerticalStackLayout>
-                    
-                    <Label Text="Conto Corrente" TextColor="#000"/>
-                    <HorizontalStackLayout Spacing="5">
-                        <Label Text="{Binding User.user.lastName}" TextColor="#000" FontSize="24" FontAttributes="Bold" />
-                        <Label Text="{Binding User.user.firstName}" TextColor="#000" FontSize="24" FontAttributes="Bold" />
-                    </HorizontalStackLayout>
+    <ScrollView>
+        <Grid>
+            <Image Source="gradient_bg.jpg" Opacity="1" Aspect="AspectFill" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+            <Grid RowDefinitions="*, auto" Margin="2">
+                <VerticalStackLayout BackgroundColor="Transparent"
+                       Padding="40, 20">
 
-                <Label Text="{Binding User.user.iban}" TextColor="#000" Margin="0, 10"/>
-                <Label Text="Saldo" TextColor="#000" FontSize="16" FontAttributes="Bold" />
-                <Label Text="{Binding Balance, StringFormat='{0} €'}" TextColor="#000" FontSize="45" FontAttributes="Bold" />
-            </VerticalStackLayout>
-        </Frame>
+                    <Frame Margin="0, 40" Padding="40, 40" BorderColor="Transparent">
+                        <Frame.Background>
+                            <LinearGradientBrush>
+                                <GradientStop Color="#00ffff" Offset="0.1" />
+                                <GradientStop Color="lime" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Frame.Background>
+                        <VerticalStackLayout>
+
+                            <Label Text="Conto Corrente" TextColor="#000"/>
+                            <HorizontalStackLayout Spacing="5">
+                                <Label Text="{Binding User.user.lastName}" TextColor="#000" FontSize="24" FontAttributes="Bold" />
+                                <Label Text="{Binding User.user.firstName}" TextColor="#000" FontSize="24" FontAttributes="Bold" />
+                            </HorizontalStackLayout>
+
+                            <Label Text="{Binding User.user.iban}" TextColor="#000" Margin="0, 10"/>
+                            <Label Text="Saldo" TextColor="#000" FontSize="16" FontAttributes="Bold" />
+                            <Label Text="{Binding Balance, StringFormat='{0} €'}" TextColor="#000" FontSize="45" FontAttributes="Bold" />
+                        </VerticalStackLayout>
+                    </Frame>
 
 
-        <Label Text="Ultimi 5 movimenti" TextColor="#000" FontSize="28" FontAttributes="Bold" />
+                    <Label Text="Ultimi 5 movimenti" TextColor="#000" FontSize="28" FontAttributes="Bold" />
 
-        <CollectionView BackgroundColor="#A3FFA1" ItemsSource="{Binding Transaction.transactions}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Grid Padding="10" Margin="5">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
+                    <CollectionView ItemsSource="{Binding Transaction.transactions}" BackgroundColor="Transparent">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame Margin="5" >
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                             <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
 
-                        <Label Text="{Binding categoryid.category}" TextColor="#000" Grid.Row="1" FontAttributes="Bold" FontSize="18"/>
-                        <Label Text="{Binding date}" TextColor="#000" Grid.Row="0" />
-                        <Label Text="{Binding amount, StringFormat='{0} €'}" TextColor="#000" Grid.Row="2" />
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
 
-    </VerticalStackLayout>
+
+                                        <VerticalStackLayout>
+                                            <Label Text="{Binding date}" TextColor="#000" Grid.Row="0"/>
+                                            <Label Text="{Binding categoryid.category}" TextColor="#000" Grid.Row="1" FontAttributes="Bold" FontSize="18"/>
+                                            <Label Text="{Binding amount, StringFormat='{0} €'}" TextColor="#000" HorizontalTextAlignment="End" VerticalTextAlignment="Center" FontSize="25" FontAttributes="Bold" />
+                                            <Label Text="Dettagli"  TextColor="#000" Grid.Column="1" FontAttributes="Italic">
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                                                </Label.GestureRecognizers>
+                                            </Label>
+                                        </VerticalStackLayout>
+
+                                    </Grid>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                </VerticalStackLayout>
+            </Grid>
+        </Grid>
+    </ScrollView>
+
+ 
+
+ 
 </ContentPage>
