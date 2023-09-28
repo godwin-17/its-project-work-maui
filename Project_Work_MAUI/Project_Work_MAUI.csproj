@@ -50,24 +50,42 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Images\bbank_logo.png" />
+	  <None Remove="Resources\Images\bbank_writing_logo.png" />
+	  <None Remove="Resources\Images\gradient_bg.jpg" />
 	  <None Remove="Resources\Images\key.png" />
+	  <None Remove="Resources\Images\light_blue.jpg" />
 	  <None Remove="Resources\Images\mail.png" />
 	  <None Remove="Resources\Images\user.png" />
+	  <None Remove="Resources\Images\white.jpg" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Maui" Version="5.3.0" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.1" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="TransazioniPage.xaml.cs">
+	    <DependentUpon>TransazioniPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="RegisterPage.xaml.cs">
 	    <DependentUpon>RegisterPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="TransazioniPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="DetailsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="HomePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="RegisterPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

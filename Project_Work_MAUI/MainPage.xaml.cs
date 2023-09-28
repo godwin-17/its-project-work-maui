@@ -1,16 +1,28 @@
-﻿namespace Project_Work_MAUI
+﻿using Project_Work_MAUI.ViewModels;
+
+namespace Project_Work_MAUI
 {
     public partial class MainPage : ContentPage
     {
-
-        public MainPage()
+        public MainPage(MainViewModel vm)
         {
             InitializeComponent();
+            BindingContext = vm;
         }
-
-        private async void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
+        protected override void OnDisappearing()
         {
-            await Shell.Current.GoToAsync("//RegisterPage");
+            base.OnDisappearing();
+            (BindingContext as MainViewModel)?.StopTimer();
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            var viewModel = BindingContext as MainViewModel;
+            viewModel?.ResetPageDisappearing();
+
+            viewModel?.StartTimer();
+
         }
     }
 }

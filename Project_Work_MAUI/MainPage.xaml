@@ -2,6 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:viewmodel="clr-namespace:Project_Work_MAUI.ViewModels"
+             x:DataType="viewmodel:MainViewModel"
              xmlns:mct="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
              x:Class="Project_Work_MAUI.MainPage"
              Shell.NavBarIsVisible="False"
@@ -18,16 +20,16 @@
             </LinearGradientBrush>
         </Grid.Background>
 
+  
+        <Image Source="bbank_writing_logo.png" HorizontalOptions="Center"  Margin="0, 380, 0, 0" WidthRequest="280" HeightRequest="52"/>
+
         <Frame BackgroundColor="LightGreen" Grid.Row="0" HorizontalOptions="EndAndExpand"
                BorderColor="LightGreen"
                Padding="0"
                Margin="0, -60, -60, 0"
                HeightRequest="250"
                WidthRequest="250"
-               CornerRadius="125"
-               
-               >
-
+               CornerRadius="125">
         </Frame>
 
         <Frame BackgroundColor="{x:StaticResource Primary}" Grid.Row="0" HorizontalOptions="EndAndExpand"
@@ -37,35 +39,34 @@
                HeightRequest="250"
                WidthRequest="250"
                CornerRadius="125">
-
         </Frame>
 
         <Frame Grid.Row="1" VerticalOptions="CenterAndExpand" BackgroundColor="#fff" Margin="15, 0, 15, 0">
 
             <VerticalStackLayout Spacing="25">
-                <Label Text="Login" FontSize="28" FontAttributes="Bold"/>
+                <Label Text="Login" TextColor="Black" FontSize="28" FontAttributes="Bold"/>
 
                 <Frame Padding="10" BorderColor="Transparent" CornerRadius="0" >
                     <Grid ColumnDefinitions="25,*" ColumnSpacing="20">
                         <Image VerticalOptions="Center" Source="mail.png" HeightRequest="25" WidthRequest="25" />
-                        <Entry VerticalOptions="Center" Placeholder="Email" Grid.Column="1"/>
+                        <Entry Text="{Binding Email}" TextColor="Black" VerticalOptions="Center" Placeholder="Email" Grid.Column="1"/>
                     </Grid>
                 </Frame>
 
                 <Frame Padding="10" BorderColor="Transparent" CornerRadius="0" >
                     <Grid ColumnDefinitions="25,*" ColumnSpacing="20">
                         <Image VerticalOptions="Center" Source="key.png" HeightRequest="25" WidthRequest="25" />
-                        <Entry VerticalOptions="Center" Placeholder="Password" IsPassword="True" Grid.Column="1"/>
+                        <Entry Text="{Binding Password}" TextColor="Black" VerticalOptions="Center" Placeholder="Password" IsPassword="True" Grid.Column="1"/>
                     </Grid>
                 </Frame>
 
-                <Button Text="Login" FontSize="20" FontAttributes="Bold" />
+                <Button Text="Login" Command="{Binding LoginCommand}" TextColor="#fff" FontSize="20" FontAttributes="Bold" BackgroundColor="{x:StaticResource Primary}" />
 
                 <HorizontalStackLayout Spacing="10">
-                    <Label FontAttributes="Bold" Text="Non hai un account?" VerticalTextAlignment="Center"/>
+                    <Label FontAttributes="Bold" Text="Non hai un account?" TextColor="Black" VerticalTextAlignment="Center"/>
                     <Label FontAttributes="Bold" Text="Registrati" FontSize="18" TextColor="{x:StaticResource Primary}"/>
                     <HorizontalStackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                        <TapGestureRecognizer  Command="{Binding TapRegisterCommand}" />
                     </HorizontalStackLayout.GestureRecognizers>
                 </HorizontalStackLayout>
             </VerticalStackLayout>
@@ -81,7 +82,6 @@
                HeightRequest="250"
                WidthRequest="250"
                CornerRadius="125">
-
         </Frame>
 
         <Frame BackgroundColor="#008b8b" 
@@ -94,7 +94,6 @@
                HeightRequest="250"
                WidthRequest="250"
                CornerRadius="125">
-
         </Frame>
     </Grid>
 </ContentPage>

@@ -1,14 +1,12 @@
+using Project_Work_MAUI.ViewModels;
+
 namespace Project_Work_MAUI;
 
 public partial class RegisterPage : ContentPage
 {
-	public RegisterPage()
+    public RegisterPage(RegisterViewModel vm)
 	{
         InitializeComponent();
-	}
-
-    private async void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
-    {
-        await Shell.Current.GoToAsync("//MainPage");
+        BindingContext = vm;
     }
-}
+ }

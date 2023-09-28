@@ -4,16 +4,26 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Project_Work_MAUI"
-    Shell.FlyoutBehavior="Disabled">
+    Shell.FlyoutBehavior="Flyout">
 
     <ShellContent
-        Title="Home"
+        Title="Login"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" /> 
     
     <ShellContent
-        Title="Home"
+        Title="Registrazione"
         ContentTemplate="{DataTemplate local:RegisterPage}"
         Route="RegisterPage" />
+
+    <ShellContent
+        Title="Homepage"
+        ContentTemplate="{DataTemplate local:HomePage}"
+        Route="HomePage" />
+
+    <ShellContent
+        Title="Transazioni Generali"
+        ContentTemplate="{DataTemplate local:TransazioniPage}"
+        Route="TransazioniPage" />
 
 </Shell>
