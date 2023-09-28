@@ -77,7 +77,8 @@ namespace Project_Work_MAUI.ViewModels
                     firstName = Name,
                     lastName = Surname,
                     username = Email,
-                    password = Password
+                    password = Password,
+                    confermaPassword = ConfirmPassword,
                 };
 
                 try
@@ -93,15 +94,18 @@ namespace Project_Work_MAUI.ViewModels
                     if (response.IsSuccessStatusCode)
                     {
                         await Application.Current.MainPage.DisplayAlert("Successo", "Registrazione avvenuta con successo!", "OK");
+                        return;
                     }
                     else
                     {
                         await Application.Current.MainPage.DisplayAlert("Errore", "Email già esistente.", "OK");
+                        return;
                     }
                 }
                 catch (Exception ex)
                 {
                     await Application.Current.MainPage.DisplayAlert("Error", "C'e stato un errore: " + ex.Message, "OK");
+                    return;
                 }
             }
         }

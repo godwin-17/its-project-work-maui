@@ -24,6 +24,9 @@ namespace Project_Work_MAUI
             builder.Services.AddTransient<RegisterPage>();
             builder.Services.AddTransient<RegisterViewModel>();
 
+            builder.Services.AddTransient<HomePage>();
+            builder.Services.AddTransient<HomeViewModel>();
+
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif

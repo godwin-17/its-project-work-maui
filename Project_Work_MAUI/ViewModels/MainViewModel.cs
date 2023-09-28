@@ -62,6 +62,8 @@ namespace Project_Work_MAUI.ViewModels
             pageDisappearing = false;
         }
 
+        RootUser user = new RootUser();
+
         [RelayCommand]
         async Task TapRegister()
         {
@@ -71,7 +73,7 @@ namespace Project_Work_MAUI.ViewModels
         [RelayCommand]
         async Task Login()
         {
-            if (string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Password)) 
+            if (string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Password))
             {
                 await Application.Current.MainPage.DisplayAlert("Errore", "Tutti i campi sono richiesti.", "OK");
                 return;
@@ -111,18 +113,31 @@ namespace Project_Work_MAUI.ViewModels
 
                     if (response.IsSuccessStatusCode)
                     {
+                        var responseObject = System.Text.Json.JsonSerializer.Deserialize<RootUser>(responseContent);
+
+                        user = responseObject;
+
+                        TokenProvider.Token = user.token;
+
                         await Application.Current.MainPage.DisplayAlert("Successo", "Login avvenuto con successo.", "OK");
                     }
                     else
                     {
                         await Application.Current.MainPage.DisplayAlert("Errore", "Credenziali errate.", "OK");
+                        return;
                     }
                 }
                 catch (Exception ex)
                 {
                     await Application.Current.MainPage.DisplayAlert("Errore", "C'è stato un errore: " + ex.Message, "OK");
+                    return;
                 }
             }
+
+            await Shell.Current.GoToAsync("//HomePage", new Dictionary<string, object>
+            {
+                ["User"] = user,
+            });
         }
 
         private void ClearInputs()
