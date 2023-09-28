@@ -21,4 +21,9 @@
         ContentTemplate="{DataTemplate local:HomePage}"
         Route="HomePage" />
 
+    <ShellContent
+        Title="Transazioni Generali"
+        ContentTemplate="{DataTemplate local:TransazioniPage}"
+        Route="TransazioniPage" />
+
 </Shell>

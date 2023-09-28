@@ -27,6 +27,12 @@ namespace Project_Work_MAUI
             builder.Services.AddTransient<HomePage>();
             builder.Services.AddTransient<HomeViewModel>();
 
+            builder.Services.AddTransient<DetailsPage>();
+            builder.Services.AddTransient<DetailsViewModel>();
+
+            builder.Services.AddTransient<TransazioniPage>();
+            builder.Services.AddTransient<TransazioniViewModel>();
+
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
