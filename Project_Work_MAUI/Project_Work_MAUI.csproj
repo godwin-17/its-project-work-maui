@@ -80,6 +80,9 @@
 	  <MauiXaml Update="BonificoPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="FiltriPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="RicaricaPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
