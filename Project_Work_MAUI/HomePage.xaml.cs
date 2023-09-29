@@ -23,4 +23,12 @@ public partial class HomePage : ContentPage
             });
         }
     }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        (BindingContext as HomeViewModel)?.LoadData();
+    }
+
+
 }
