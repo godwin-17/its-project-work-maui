@@ -77,6 +77,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="BonificoPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="TransazioniPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
