@@ -115,7 +115,7 @@ namespace Project_Work_MAUI.ViewModels
             }
             catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Errore", ex.Message, "OK");
+                await Application.Current.MainPage.DisplayAlert("Errore!", ex.Message, "OK");
                 return;
             }
 
