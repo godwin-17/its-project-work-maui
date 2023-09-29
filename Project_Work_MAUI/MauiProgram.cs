@@ -39,6 +39,9 @@ namespace Project_Work_MAUI
             builder.Services.AddTransient<RicaricaPage>();
             builder.Services.AddTransient<RicaricaViewModel>();
 
+            builder.Services.AddTransient<ProfilePage>();
+            builder.Services.AddTransient<ProfileViewModel>();
+
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
