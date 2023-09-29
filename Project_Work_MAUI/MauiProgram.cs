@@ -39,6 +39,9 @@ namespace Project_Work_MAUI
             builder.Services.AddTransient<RicaricaPage>();
             builder.Services.AddTransient<RicaricaViewModel>();
 
+            builder.Services.AddTransient<MovimentiPage>();
+            builder.Services.AddTransient<MoviementiViewModel>();
+
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif

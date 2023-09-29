@@ -83,6 +83,9 @@
 	  <MauiXaml Update="RicaricaPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="MovimentiPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="TransazioniPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
