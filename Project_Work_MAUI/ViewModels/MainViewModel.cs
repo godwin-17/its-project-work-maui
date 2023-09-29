@@ -30,7 +30,7 @@ namespace Project_Work_MAUI.ViewModels
             bool showAlert = true;
 
 
-            dispatcher.StartTimer(TimeSpan.FromSeconds(30), () =>
+            dispatcher.StartTimer(TimeSpan.FromSeconds(300), () =>
             {
                 if (pageDisappearing)
                 {
