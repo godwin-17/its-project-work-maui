@@ -99,8 +99,18 @@ namespace Project_Work_MAUI.ViewModels
                     }
                     else if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
                     {
-                        await Application.Current.MainPage.DisplayAlert("Errore", "Quantità di denaro insufficiente, riprova.", "OK");
-                        return;
+                        var errorResponse = JsonConvert.DeserializeObject<ErrorResponse>(responseContent);
+
+                        if (errorResponse != null)
+                        {
+                            await Application.Current.MainPage.DisplayAlert("Errore", errorResponse.message, "OK");
+                            return;
+                        }
+                        else
+                        {
+                            await Application.Current.MainPage.DisplayAlert("Errore", "Errore con l'autorizzazione.", "OK");
+                            return;
+                        }
                     }
                     else 
                     {
