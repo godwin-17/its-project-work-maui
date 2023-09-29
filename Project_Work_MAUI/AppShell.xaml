@@ -30,4 +30,9 @@
         Title="Bonifico"
         ContentTemplate="{DataTemplate local:BonificoPage}"
         Route="BonificoPage" />
+
+    <ShellContent
+        Title="Ricarica Cellulare"
+        ContentTemplate="{DataTemplate local:RicaricaPage}"
+        Route="RicaricaPage" />
 </Shell>

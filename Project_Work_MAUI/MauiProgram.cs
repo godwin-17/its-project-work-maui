@@ -36,6 +36,9 @@ namespace Project_Work_MAUI
             builder.Services.AddTransient<BonificoPage>();
             builder.Services.AddTransient<BonificoViewModel>();
 
+            builder.Services.AddTransient<RicaricaPage>();
+            builder.Services.AddTransient<RicaricaViewModel>();
+
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
