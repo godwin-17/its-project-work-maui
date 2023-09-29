@@ -33,6 +33,9 @@ namespace Project_Work_MAUI
             builder.Services.AddTransient<TransazioniPage>();
             builder.Services.AddTransient<TransazioniViewModel>();
 
+            builder.Services.AddTransient<BonificoPage>();
+            builder.Services.AddTransient<BonificoViewModel>();
+
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif

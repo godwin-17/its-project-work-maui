@@ -26,4 +26,8 @@
         ContentTemplate="{DataTemplate local:TransazioniPage}"
         Route="TransazioniPage" />
 
+    <ShellContent
+        Title="Bonifico"
+        ContentTemplate="{DataTemplate local:BonificoPage}"
+        Route="BonificoPage" />
 </Shell>

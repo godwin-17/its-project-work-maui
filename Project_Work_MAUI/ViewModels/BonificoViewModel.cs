@@ -6,31 +6,8 @@ using System.Net.Http.Headers;
 
 namespace Project_Work_MAUI.ViewModels
 {
-    public partial class TransazioniViewModel: ObservableObject
+    public partial class BonificoViewModel : ObservableObject
     {
-        [ObservableProperty]
-        List<TransactionCategory> transactionCategories = new List<TransactionCategory>
-        {
-            new TransactionCategory
-            {
-                Category = "Pagamento Utenze",
-                Typology = "Uscita",
-                Id = "650d865bff8d876d587ff468"
-            },
-            new TransactionCategory
-            {
-                Category = "Versamento Bancomat",
-                Typology = "Entrata",
-                Id = "650d86baff8d876d587ff46c"
-            },
-            new TransactionCategory
-            {
-                Category = "Prelievo Contanti",
-                Typology = "Uscita",
-                Id = "6513efa173766e8ac7e52570"
-            }
-        };
-
         [ObservableProperty]
         int amount;
 
@@ -38,12 +15,38 @@ namespace Project_Work_MAUI.ViewModels
         string reason;
 
         [ObservableProperty]
+        string iban;
+
+        [ObservableProperty]
+        List<TransactionCategory> transactionCategories = new List<TransactionCategory>
+        {
+            new TransactionCategory
+            {
+                Category = "Bonifico Uscita",
+                Typology = "Uscita",
+                Id = "650d854dde65f59e517de0c5"
+            },
+        };
+
+        [ObservableProperty]
         TransactionCategory selectedCategory;
+
+        public BonificoViewModel()
+        {
+            SelectedCategory = transactionCategories[0];
+            Iban = "ITL8Y8CR2YC9WUWYCGIJNXYVWNMCG";
+        }
 
         [RelayCommand]
         async Task Transaction()
         {
-            if(string.IsNullOrEmpty(Reason))
+            if (string.IsNullOrEmpty(Iban))
+            {
+                await Application.Current.MainPage.DisplayAlert("Errore", "Inserire un'IBAN", "OK");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(Reason))
             {
                 await Application.Current.MainPage.DisplayAlert("Errore", "Inserire una causale", "OK");
                 return;
@@ -54,7 +57,6 @@ namespace Project_Work_MAUI.ViewModels
                 await Application.Current.MainPage.DisplayAlert("Errore", "Inserire un importo positivo", "OK");
                 return;
             }
-
 
             if (SelectedCategory == null)
             {
@@ -76,6 +78,7 @@ namespace Project_Work_MAUI.ViewModels
 
                     TransactionRequest transactionData = new TransactionRequest
                     {
+                        iban = Iban,
                         amount = Amount,
                         categoryid = SelectedCategory.Id,
                         description = Reason
@@ -112,7 +115,7 @@ namespace Project_Work_MAUI.ViewModels
                             return;
                         }
                     }
-                    else 
+                    else
                     {
                         await Application.Current.MainPage.DisplayAlert("Errore", "Errore con l'autorizzazione.", "OK");
                         return;
@@ -125,7 +128,5 @@ namespace Project_Work_MAUI.ViewModels
                 return;
             }
         }
-
     }
 }
-
