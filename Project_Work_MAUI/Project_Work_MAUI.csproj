@@ -49,10 +49,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Resources\Images\backgroud.jpeg" />
+	  <None Remove="Resources\Images\bg3.jpg" />
 	  <None Remove="Resources\Images\bbank_logo.png" />
 	  <None Remove="Resources\Images\bbank_writing_logo.png" />
 	  <None Remove="Resources\Images\bg.jpg" />
+	  <None Remove="Resources\Images\bg3.jpg" />
 	  <None Remove="Resources\Images\gradient_bg.jpg" />
 	  <None Remove="Resources\Images\key.png" />
 	  <None Remove="Resources\Images\light_blue.jpg" />

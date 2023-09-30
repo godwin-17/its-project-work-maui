@@ -12,6 +12,7 @@
         Route="MainPage" /> 
     
     <ShellContent
+        Icon="registration.png"
         Title="Registrazione"
         ContentTemplate="{DataTemplate local:RegisterPage}"
         Route="RegisterPage" />

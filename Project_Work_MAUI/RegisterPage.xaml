@@ -37,7 +37,7 @@
 
         <Frame Grid.Row="1" VerticalOptions="CenterAndExpand" BackgroundColor="#fff" Margin="15, 0, 15, 0">
 
-            <VerticalStackLayout Spacing="25">
+            <VerticalStackLayout Spacing="5">
                 <Label Text="Registrazione" TextColor="Black" FontSize="28" FontAttributes="Bold"/>
 
                 <Frame Padding="10" BorderColor="Transparent" CornerRadius="0" >

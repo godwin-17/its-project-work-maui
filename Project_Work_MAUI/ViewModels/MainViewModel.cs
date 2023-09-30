@@ -143,10 +143,11 @@ namespace Project_Work_MAUI.ViewModels
                 }
             }
 
-            await Shell.Current.GoToAsync("//HomePage", new Dictionary<string, object>
-            {
-                ["User"] = user,
-            });
+            //await Shell.Current.GoToAsync("//HomePage", new Dictionary<string, object>
+            //{
+            //    ["User"] = user,
+            //});
+            await Shell.Current.GoToAsync("//HomePage");
         }
 
         private void ClearInputs()

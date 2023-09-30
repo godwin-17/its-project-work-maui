@@ -12,7 +12,7 @@ namespace Project_Work_MAUI.ViewModels
     public partial class HomeViewModel : ObservableObject
     {
         [ObservableProperty]
-        RootUser user;
+        User user;
 
         //[ObservableProperty]
         //string token;
@@ -53,6 +53,37 @@ namespace Project_Work_MAUI.ViewModels
         {
            await LoadBalanceData();
            await LoadTranscationsData();
+           await LoadProfile();
+        }
+
+        private async Task LoadProfile()
+        {
+            string oauthToken = await SecureStorage.Default.GetAsync("oauth_token");
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    string apiUrl = "https://bbankapidaniel.azurewebsites.net/api/users/me";
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", oauthToken);
+                    HttpResponseMessage response = await client.GetAsync(apiUrl);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string jsonResponse = await response.Content.ReadAsStringAsync();
+                        var result = JsonConvert.DeserializeObject<User>(jsonResponse);
+                        User = result;
+                    }
+                    else
+                    {
+                        await Application.Current.MainPage.DisplayAlert("Errore", "Errore con il caricamento del profilo", "OK");
+                        return;
+                    }
+                }
+            }
+            catch (Exception ex) 
+            {
+                await Application.Current.MainPage.DisplayAlert("Errore", ex.Message, "OK");
+                return;
+            }
         }
 
         private async Task LoadTranscationsData()

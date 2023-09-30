@@ -20,7 +20,7 @@
             </LinearGradientBrush>
         </Grid.Background>
 
-        <Image Source="bbank_writing_logo.png" HorizontalOptions="Center"  Margin="0, 380, 0, 0" WidthRequest="280" HeightRequest="52"/>
+        <Image Source="bbank_writing_logo.png" HorizontalOptions="Center"  Margin="0, 300, 0, 0" WidthRequest="280" HeightRequest="52"/>
 
         <Frame BackgroundColor="LightGreen" Grid.Row="0" HorizontalOptions="EndAndExpand"
                BorderColor="LightGreen"
@@ -40,10 +40,10 @@
                CornerRadius="125">
         </Frame>
 
-        <ActivityIndicator x:Name="activityindicator" Color="Black" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" IsRunning="{Binding Loading}" ZIndex="10"/>
-        <Frame Grid.Row="1" VerticalOptions="CenterAndExpand" BackgroundColor="#fff" Margin="15, 0, 15, 0">
+        <ActivityIndicator x:Name="activityindicator" Color="Black" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" IsRunning="{Binding Loading}" ZIndex="10" Margin="0,400,0,0"/>
+        <Frame Grid.Row="1" VerticalOptions="CenterAndExpand" BackgroundColor="#fff" Margin="15, 50, 15, 0">
 
-            <VerticalStackLayout Spacing="25">
+            <VerticalStackLayout Spacing="10">
                 <Label Text="Login" TextColor="Black" FontSize="28" FontAttributes="Bold"/>
 
                 <Frame Padding="10" BorderColor="Transparent" CornerRadius="0" >
