@@ -10,9 +10,21 @@
              >
     <ScrollView>
         <Grid>
-            <Image Source="gradient_bg.jpg" Opacity="1" Aspect="AspectFill" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+            <Image Source="backgroud.jpeg" Opacity="1" Aspect="AspectFill" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
             <Grid RowDefinitions="*, auto" Margin="10">
                 <VerticalStackLayout BackgroundColor="Transparent">
+                    <HorizontalStackLayout Spacing="10" HorizontalOptions="EndAndExpand">
+                        <Label FontAttributes="Bold"
+                               Text="Logout"
+                               FontSize="15"
+                               HorizontalTextAlignment="End" 
+                               TextColor="{x:StaticResource Primary}"
+                               TextDecorations="Underline"/>
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer  Command="{Binding TapLogoutCommand}" />
+                        </HorizontalStackLayout.GestureRecognizers>
+                    </HorizontalStackLayout>
+
                     <Frame Margin="10, 40" Padding="40, 40" BorderColor="Transparent">
                         <Frame.Background>
                             <LinearGradientBrush>

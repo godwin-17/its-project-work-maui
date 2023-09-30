@@ -18,6 +18,7 @@ namespace Project_Work_MAUI.ViewModels
 
         private async Task LoadUserInfo()
         {
+            string oauthToken = await SecureStorage.Default.GetAsync("oauth_token");
             try
             {
                 using (HttpClient client = new HttpClient())
@@ -25,7 +26,7 @@ namespace Project_Work_MAUI.ViewModels
                     string apiUrl = "https://bbankapidaniel.azurewebsites.net/api/users/me";
 
 
-                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", TokenProvider.Token);
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", oauthToken);
 
                     HttpResponseMessage response = await client.GetAsync(apiUrl);
 

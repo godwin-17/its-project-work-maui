@@ -1,4 +1,6 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using Android.Content;
+using Android.Views.InputMethods;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Newtonsoft.Json;
 using Project_Work_MAUI.Models;
@@ -20,6 +22,9 @@ namespace Project_Work_MAUI.ViewModels
 
         [ObservableProperty]
         string password;
+
+        [ObservableProperty]
+        bool loading;
 
         private bool timerExpired;
         private bool pageDisappearing = false;
@@ -85,7 +90,7 @@ namespace Project_Work_MAUI.ViewModels
                 await Application.Current.MainPage.DisplayAlert("Errore", "Inserisci un indirizzo email valido.", "OK");
                 return;
             }
-
+            
             await MakeLogin();
         }
 
@@ -103,6 +108,7 @@ namespace Project_Work_MAUI.ViewModels
 
                 try
                 {
+                    Loading = true;
                     string jsonData = JsonConvert.SerializeObject(loginData);
 
                     StringContent content = new StringContent(jsonData, System.Text.Encoding.UTF8, "application/json");
@@ -117,15 +123,16 @@ namespace Project_Work_MAUI.ViewModels
 
                         user = responseObject;
 
-                        TokenProvider.Token = user.token;
-
-                        await Application.Current.MainPage.DisplayAlert("Successo", "Login avvenuto con successo.", "OK");
+                        await SecureStorage.Default.SetAsync("oauth_token", user.token);
+                        //TokenProvider.Token = user.token;
+                        //await Application.Current.MainPage.DisplayAlert("Successo", "Login avvenuto con successo.", "OK");
                     }
                     else
                     {
                         await Application.Current.MainPage.DisplayAlert("Errore", "Credenziali errate.", "OK");
                         return;
                     }
+                    Loading = false;
                 }
                 catch (Exception ex)
                 {

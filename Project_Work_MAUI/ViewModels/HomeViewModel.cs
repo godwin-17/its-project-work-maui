@@ -12,8 +12,8 @@ namespace Project_Work_MAUI.ViewModels
         [ObservableProperty]
         RootUser user;
 
-        [ObservableProperty]
-        string token;
+        //[ObservableProperty]
+        //string token;
 
         [ObservableProperty]
         RootTransaction transaction;
@@ -25,11 +25,24 @@ namespace Project_Work_MAUI.ViewModels
             set { SetProperty(ref balance, value); }
         }
 
-
+        [RelayCommand]
+        async Task TapLogout()
+        {
+            bool success = SecureStorage.Default.Remove("oauth_token");
+            if(success)
+            {
+                await Application.Current.MainPage.DisplayAlert("Logged out", "LogOut effettuato con successo", "OK");
+                await Shell.Current.GoToAsync("//MainPage");
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("LogOut Error", "Errore durante il logout, chiudere l'applicazione e riporvare", "OK");
+            }
+        }
 
         public HomeViewModel()
         {
-            Token = TokenProvider.Token;
+            //Token = TokenProvider.Token;
         }
 
         public async Task LoadData()
@@ -40,6 +53,7 @@ namespace Project_Work_MAUI.ViewModels
 
         private async Task LoadTranscationsData()
         {
+            string oauthToken = await SecureStorage.Default.GetAsync("oauth_token");
             try
             {
                 using (HttpClient client = new HttpClient())
@@ -47,8 +61,7 @@ namespace Project_Work_MAUI.ViewModels
                     // Di default restituisce 5 movimenti
                     string apiUrl = "https://bbankapidaniel.azurewebsites.net/api/transaction/research";
 
-
-                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", TokenProvider.Token);
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", oauthToken);
 
                     HttpResponseMessage response = await client.GetAsync(apiUrl);
 
@@ -87,14 +100,14 @@ namespace Project_Work_MAUI.ViewModels
 
         private async Task LoadBalanceData()
         {
+            string oauthToken = await SecureStorage.Default.GetAsync("oauth_token");
             try
             {
                 using (HttpClient client = new HttpClient())
                 {
                     string apiUrl = "https://bbankapidaniel.azurewebsites.net/api/users/balance";
 
-
-                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", TokenProvider.Token);
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", oauthToken);
 
                     HttpResponseMessage response = await client.GetAsync(apiUrl);
 

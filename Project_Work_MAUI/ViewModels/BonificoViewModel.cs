@@ -88,8 +88,8 @@ namespace Project_Work_MAUI.ViewModels
                     string jsonData = JsonConvert.SerializeObject(transactionData);
 
                     StringContent content = new StringContent(jsonData, System.Text.Encoding.UTF8, "application/json");
-
-                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", TokenProvider.Token);
+                    string oauthToken = await SecureStorage.Default.GetAsync("oauth_token");
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", oauthToken);
 
                     HttpResponseMessage response = await client.PostAsync(apiUrl, content);
 

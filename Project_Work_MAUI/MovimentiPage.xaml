@@ -9,7 +9,7 @@
     <VerticalStackLayout>
         <ScrollView>
             <Grid>
-                <Image Source="gradient_bg.jpg" Opacity="1" Aspect="AspectFill" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+                <Image Source="backgroud.jpeg" Opacity="1" Aspect="AspectFill" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
                 <Grid RowDefinitions="*, auto" Margin="2">
                     <VerticalStackLayout BackgroundColor="Transparent"
                        Padding="40, 20">
