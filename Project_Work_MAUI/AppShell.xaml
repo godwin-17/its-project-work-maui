@@ -35,6 +35,11 @@
         Title="Ricarica Cellulare"
         ContentTemplate="{DataTemplate local:RicaricaPage}"
         Route="RicaricaPage" />
+    <ShellContent
+        Title="Movimenti"
+        ContentTemplate="{DataTemplate local:MovimentiPage}"
+        Route="MovimentiPage" />
+
 
     <ShellContent
         Title="Profilo"
