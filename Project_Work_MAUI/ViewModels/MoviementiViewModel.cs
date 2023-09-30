@@ -29,7 +29,7 @@ namespace Project_Work_MAUI.ViewModels
                 using (HttpClient client = new HttpClient())
                 {
                     // Restituisce tutte le transaction dell'account a cui sei loggato
-                    string apiUrl = "https://bbankapidaniel.azurewebsites.net/api/transaction/research";
+                    string apiUrl = "https://bbankapidaniel.azurewebsites.net/api/transaction/research?/num=100";
 
 
                     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", oauthToken);

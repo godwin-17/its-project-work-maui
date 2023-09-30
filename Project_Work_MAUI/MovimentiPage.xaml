@@ -9,18 +9,16 @@
     <VerticalStackLayout>
         <ScrollView>
             <Grid>
-                <Image Source="bg3.jpg" Opacity="1" Aspect="AspectFill" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+                <Image Source="white.jpg" Opacity="1" Aspect="AspectFill" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
                 <Grid RowDefinitions="*, auto" Margin="2">
-                    <VerticalStackLayout BackgroundColor="Transparent"
-                       Padding="40, 20">
+                    <VerticalStackLayout BackgroundColor="Transparent">
 
-                        <Label Text="movimenti" TextColor="#000" FontSize="28" FontAttributes="Bold" />
-
+                        <Label Text="Movimenti recenti" Margin="10" TextColor="#000" FontSize="28" FontAttributes="Bold" />
 
                         <CollectionView ItemsSource="{Binding Transaction.transactions}" BackgroundColor="Transparent">
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
-                                    <Frame Margin="5" >
+                                    <Frame Margin="10,5,10,5" BorderColor="LightGray">
                                         <Grid>
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto" />
@@ -28,17 +26,16 @@
                                                 <RowDefinition Height="Auto" />
                                             </Grid.RowDefinitions>
 
-
-
                                             <VerticalStackLayout>
                                                 <Label Text="{Binding date}" TextColor="#000" Grid.Row="0"/>
                                                 <Label Text="{Binding categoryid.category}" TextColor="#000" Grid.Row="1" FontAttributes="Bold" FontSize="18"/>
-                                                <Label Text="{Binding amount, StringFormat='{0} €'}" TextColor="#000" HorizontalTextAlignment="End" VerticalTextAlignment="Center" FontSize="25" FontAttributes="Bold" />
-                                                <Label Text="Dettagli"  TextColor="#000" Grid.Column="1" FontAttributes="Italic">
+                                                <Label Text="{Binding amount, StringFormat='{0:N2} €'}" TextColor="#000" HorizontalTextAlignment="End" VerticalTextAlignment="Center" FontSize="25" FontAttributes="Bold" />
+                                                <Label Text="Dettagli"  TextDecorations="Underline" TextColor="#000" Grid.Column="1" FontAttributes="Italic">
                                                     <Label.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" CommandParameter="{Binding .}"></TapGestureRecognizer>
                                                     </Label.GestureRecognizers>
                                                 </Label>
+
                                             </VerticalStackLayout>
 
                                         </Grid>

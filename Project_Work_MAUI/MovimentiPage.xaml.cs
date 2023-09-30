@@ -9,7 +9,8 @@ public partial class MovimentiPage : ContentPage
 	{
 		InitializeComponent();
 		BindingContext = vm;
-	}
+        (BindingContext as MoviementiViewModel)?.LoadData();
+    }
 
     private async void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
     {

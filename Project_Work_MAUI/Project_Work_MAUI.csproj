@@ -54,19 +54,26 @@
 	  <None Remove="Resources\Images\bbank_writing_logo.png" />
 	  <None Remove="Resources\Images\bg.jpg" />
 	  <None Remove="Resources\Images\bg3.jpg" />
+	  <None Remove="Resources\Images\bonifico.svg" />
 	  <None Remove="Resources\Images\gradient_bg.jpg" />
+	  <None Remove="Resources\Images\homepage.svg" />
 	  <None Remove="Resources\Images\key.png" />
 	  <None Remove="Resources\Images\light_blue.jpg" />
+	  <None Remove="Resources\Images\login.svg" />
+	  <None Remove="Resources\Images\logout.svg" />
 	  <None Remove="Resources\Images\mail.png" />
+	  <None Remove="Resources\Images\movimenti.svg" />
+	  <None Remove="Resources\Images\profile.svg" />
+	  <None Remove="Resources\Images\ricarica.svg" />
+	  <None Remove="Resources\Images\transactions.svg" />
 	  <None Remove="Resources\Images\user.png" />
 	  <None Remove="Resources\Images\white.jpg" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Acr.UserDialogs" Version="8.0.1" />
-		<PackageReference Include="CommunityToolkit.Maui" Version="5.3.0" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="6.0.0" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.1" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="7.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 	</ItemGroup>
