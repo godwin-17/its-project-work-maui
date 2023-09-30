@@ -6,7 +6,7 @@
              xmlns:viewmodel="clr-namespace:Project_Work_MAUI.ViewModels"
              x:Class="Project_Work_MAUI.DetailsPage"
              x:DataType="viewmodel:DetailsViewModel"
-             Title="DetailsPage">
+             Title="Dettagli">
     <Grid>
         <Image Source="white.jpg" Opacity="1" Aspect="AspectFill" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
         <Grid RowDefinitions="*, auto" Margin="2">
