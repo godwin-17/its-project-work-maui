@@ -1,20 +1,12 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
 using Newtonsoft.Json;
 using Project_Work_MAUI.Models;
 using System.Net.Http.Headers;
 
 namespace Project_Work_MAUI.ViewModels
 {
-    [QueryProperty("User", "User")]
-    public partial class HomeViewModel : ObservableObject
+    public partial class MoviementiViewModel: ObservableObject
     {
-        [ObservableProperty]
-        RootUser user;
-
-        //[ObservableProperty]
-        //string token;
-
         [ObservableProperty]
         RootTransaction transaction;
 
@@ -24,33 +16,11 @@ namespace Project_Work_MAUI.ViewModels
             get { return balance; }
             set { SetProperty(ref balance, value); }
         }
-
-        [RelayCommand]
-        async Task TapLogout()
-        {
-            bool success = SecureStorage.Default.Remove("oauth_token");
-            if(success)
-            {
-                await Application.Current.MainPage.DisplayAlert("Logged out", "LogOut effettuato con successo", "OK");
-                await Shell.Current.GoToAsync("//MainPage");
-            }
-            else
-            {
-                await Application.Current.MainPage.DisplayAlert("LogOut Error", "Errore durante il logout, chiudere l'applicazione e riporvare", "OK");
-            }
-        }
-
-        public HomeViewModel()
-        {
-            //Token = TokenProvider.Token;
-        }
-
         public async Task LoadData()
         {
-           await LoadBalanceData();
-           await LoadTranscationsData();
+            await LoadBalanceData();
+            await LoadTranscationsData();
         }
-
         private async Task LoadTranscationsData()
         {
             string oauthToken = await SecureStorage.Default.GetAsync("oauth_token");
@@ -58,8 +28,9 @@ namespace Project_Work_MAUI.ViewModels
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    // Di default restituisce 5 movimenti
+                    // Restituisce tutte le transaction dell'account a cui sei loggato
                     string apiUrl = "https://bbankapidaniel.azurewebsites.net/api/transaction/research";
+
 
                     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", oauthToken);
 
@@ -72,7 +43,7 @@ namespace Project_Work_MAUI.ViewModels
                         var result = JsonConvert.DeserializeObject<RootTransaction>(jsonResponse);
 
                         Transaction = result;
-                        
+
                     }
                     else
                     {
@@ -87,7 +58,6 @@ namespace Project_Work_MAUI.ViewModels
                 return;
             }
         }
-
         public class UserBalanceResponse
         {
             public List<Account> accout { get; set; }
@@ -97,7 +67,6 @@ namespace Project_Work_MAUI.ViewModels
         {
             public decimal balance { get; set; }
         }
-
         private async Task LoadBalanceData()
         {
             string oauthToken = await SecureStorage.Default.GetAsync("oauth_token");
@@ -106,6 +75,7 @@ namespace Project_Work_MAUI.ViewModels
                 using (HttpClient client = new HttpClient())
                 {
                     string apiUrl = "https://bbankapidaniel.azurewebsites.net/api/users/balance";
+
 
                     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", oauthToken);
 

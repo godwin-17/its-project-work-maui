@@ -11,7 +11,7 @@
     <Page.Behaviors>
         <mct:StatusBarBehavior StatusBarColor="#3A9E3E"/>
     </Page.Behaviors>
-
+    
     <Grid RowDefinitions="1*,8*,1*">
         <Grid.Background>
             <LinearGradientBrush>
@@ -20,7 +20,6 @@
             </LinearGradientBrush>
         </Grid.Background>
 
-  
         <Image Source="bbank_writing_logo.png" HorizontalOptions="Center"  Margin="0, 380, 0, 0" WidthRequest="280" HeightRequest="52"/>
 
         <Frame BackgroundColor="LightGreen" Grid.Row="0" HorizontalOptions="EndAndExpand"
@@ -41,6 +40,7 @@
                CornerRadius="125">
         </Frame>
 
+        <ActivityIndicator x:Name="activityindicator" Color="Black" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" IsRunning="{Binding Loading}" ZIndex="10"/>
         <Frame Grid.Row="1" VerticalOptions="CenterAndExpand" BackgroundColor="#fff" Margin="15, 0, 15, 0">
 
             <VerticalStackLayout Spacing="25">
@@ -60,7 +60,7 @@
                     </Grid>
                 </Frame>
 
-                <Button Text="Login" Command="{Binding LoginCommand}" TextColor="#fff" FontSize="20" FontAttributes="Bold" BackgroundColor="{x:StaticResource Primary}" />
+                <Button Text="Login" Command="{Binding LoginCommand}" TextColor="#fff" FontSize="20" FontAttributes="Bold" BackgroundColor="{x:StaticResource Primary}"/>
 
                 <HorizontalStackLayout Spacing="10">
                     <Label FontAttributes="Bold" Text="Non hai un account?" TextColor="Black" VerticalTextAlignment="Center"/>

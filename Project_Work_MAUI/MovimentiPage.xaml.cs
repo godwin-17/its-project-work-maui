@@ -1,18 +1,15 @@
 using Project_Work_MAUI.Models;
 using Project_Work_MAUI.ViewModels;
-using System.Globalization;
 
 namespace Project_Work_MAUI;
 
-public partial class HomePage : ContentPage
+public partial class MovimentiPage : ContentPage
 {
-	public HomePage(HomeViewModel vm)
+	public MovimentiPage(MoviementiViewModel vm)
 	{
 		InitializeComponent();
 		BindingContext = vm;
-        (BindingContext as HomeViewModel)?.LoadData();
-
-    }
+	}
 
     private async void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
     {
@@ -24,12 +21,4 @@ public partial class HomePage : ContentPage
             });
         }
     }
-
-    protected override void OnAppearing()
-    {
-        base.OnAppearing();
-        (BindingContext as HomeViewModel)?.LoadData();
-    }
-
-
 }

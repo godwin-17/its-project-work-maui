@@ -6,6 +6,8 @@
         {
             InitializeComponent();
             Routing.RegisterRoute(nameof(DetailsPage), typeof(DetailsPage));
+            Routing.RegisterRoute(nameof(FiltriPage), typeof(FiltriPage));
+
             Routing.RegisterRoute(nameof(ChangePasswordPage), typeof(ChangePasswordPage));
         }
     }

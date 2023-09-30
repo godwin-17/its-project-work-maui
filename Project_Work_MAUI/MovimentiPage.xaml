@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Project_Work_MAUI.MovimentiPage"
+             xmlns:viewmodel="clr-namespace:Project_Work_MAUI.ViewModels"
+             xmlns:mcd="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             Title="Movimenti">
+    <VerticalStackLayout>
+        <ScrollView>
+            <Grid>
+                <Image Source="backgroud.jpeg" Opacity="1" Aspect="AspectFill" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+                <Grid RowDefinitions="*, auto" Margin="2">
+                    <VerticalStackLayout BackgroundColor="Transparent"
+                       Padding="40, 20">
+
+                        <Label Text="movimenti" TextColor="#000" FontSize="28" FontAttributes="Bold" />
+
+
+                        <CollectionView ItemsSource="{Binding Transaction.transactions}" BackgroundColor="Transparent">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Frame Margin="5" >
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+
+
+
+                                            <VerticalStackLayout>
+                                                <Label Text="{Binding date}" TextColor="#000" Grid.Row="0"/>
+                                                <Label Text="{Binding categoryid.category}" TextColor="#000" Grid.Row="1" FontAttributes="Bold" FontSize="18"/>
+                                                <Label Text="{Binding amount, StringFormat='{0} €'}" TextColor="#000" HorizontalTextAlignment="End" VerticalTextAlignment="Center" FontSize="25" FontAttributes="Bold" />
+                                                <Label Text="Dettagli"  TextColor="#000" Grid.Column="1" FontAttributes="Italic">
+                                                    <Label.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                                                    </Label.GestureRecognizers>
+                                                </Label>
+                                            </VerticalStackLayout>
+
+                                        </Grid>
+                                    </Frame>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+
+                    </VerticalStackLayout>
+                </Grid>
+            </Grid>
+        </ScrollView>
+    </VerticalStackLayout>
+</ContentPage>
