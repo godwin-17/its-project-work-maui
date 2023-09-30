@@ -39,6 +39,7 @@ namespace Project_Work_MAUI.ViewModels
 
         private async Task ChangePassword()
         {
+            string oauthToken = await SecureStorage.Default.GetAsync("oauth_token");
             try
             {
                 using(HttpClient client = new HttpClient())
@@ -55,7 +56,7 @@ namespace Project_Work_MAUI.ViewModels
 
                     StringContent content = new StringContent(jsonData, System.Text.Encoding.UTF8, "application/json");
 
-                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", TokenProvider.Token);
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", oauthToken);
 
                     HttpResponseMessage response = await client.PatchAsync(apiUrl, content);
 
