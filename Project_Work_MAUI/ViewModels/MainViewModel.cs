@@ -132,6 +132,7 @@ namespace Project_Work_MAUI.ViewModels
                     else
                     {
                         await Application.Current.MainPage.DisplayAlert("Errore", "Credenziali errate.", "OK");
+                        Loading = false;
                         return;
                     }
                     Loading = false;
