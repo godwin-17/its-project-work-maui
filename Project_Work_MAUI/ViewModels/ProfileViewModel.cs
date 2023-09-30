@@ -25,7 +25,6 @@ namespace Project_Work_MAUI.ViewModels
                 {
                     string apiUrl = "https://bbankapidaniel.azurewebsites.net/api/users/me";
 
-
                     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", oauthToken);
 
                     HttpResponseMessage response = await client.GetAsync(apiUrl);

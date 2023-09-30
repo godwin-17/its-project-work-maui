@@ -1,5 +1,5 @@
-﻿using Android.Content;
-using Android.Views.InputMethods;
+﻿using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Newtonsoft.Json;
@@ -124,6 +124,8 @@ namespace Project_Work_MAUI.ViewModels
                         user = responseObject;
 
                         await SecureStorage.Default.SetAsync("oauth_token", user.token);
+                        var toast = Toast.Make("Logged In", ToastDuration.Short, 12);
+                        await toast.Show();
                         //TokenProvider.Token = user.token;
                         //await Application.Current.MainPage.DisplayAlert("Successo", "Login avvenuto con successo.", "OK");
                     }
