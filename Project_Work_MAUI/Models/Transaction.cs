@@ -14,8 +14,8 @@
     public class Transaction
     {
         public DateTime date { get; set; }
-        public int? balance { get; set; }
-        public int amount { get; set; }
+        public float? balance { get; set; }
+        public float amount { get; set; }
         public Categoryid categoryid { get; set; }
         public string description { get; set; }
     }

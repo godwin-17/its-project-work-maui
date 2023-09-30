@@ -125,6 +125,7 @@ namespace Project_Work_MAUI.ViewModels
 
                         await SecureStorage.Default.SetAsync("oauth_token", user.token);
                         var toast = Toast.Make("Logged In", ToastDuration.Short, 12);
+                        Password = "";
                         await toast.Show();
                         //TokenProvider.Token = user.token;
                         //await Application.Current.MainPage.DisplayAlert("Successo", "Login avvenuto con successo.", "OK");

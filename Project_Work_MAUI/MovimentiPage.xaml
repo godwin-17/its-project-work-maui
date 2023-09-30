@@ -6,47 +6,52 @@
              xmlns:mcd="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              Title="Movimenti">
-    <VerticalStackLayout>
-        <ScrollView>
-            <Grid>
-                <Image Source="white.jpg" Opacity="1" Aspect="AspectFill" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
-                <Grid RowDefinitions="*, auto" Margin="2">
-                    <VerticalStackLayout BackgroundColor="Transparent">
+    <ScrollView>
+        <Grid>
+            <Image Source="white.jpg" Opacity="1" Aspect="AspectFill" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+            <Grid RowDefinitions="*, auto" Margin="10">
+                <VerticalStackLayout BackgroundColor="Transparent">
+                    <Label Text="Lista movimenti" Margin="10" TextColor="#000" FontSize="28" FontAttributes="Bold" />
+                    <HorizontalStackLayout>
+                        <DatePicker />
+                        <TimePicker />
+                        <Picker Title="Categoria" FontSize="18" Margin="0, 0, 0, 0" ItemsSource="{Binding TransactionCategories}" ItemDisplayBinding="{Binding Category}" SelectedItem="{Binding SelectedCategory, Mode=TwoWay}" TextColor="#000">
+                        </Picker>
+                        <Entry Placeholder="N. Transazioni" Text="{Binding Number}" TextColor="#000" Keyboard="Numeric" FontSize="18"/>
+                    </HorizontalStackLayout>
+                    <CollectionView ItemsSource="{Binding Transaction.transactions}" BackgroundColor="Transparent">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame Margin="10,5,10,5" BorderColor="LightGray">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
 
-                        <Label Text="Movimenti recenti" Margin="10" TextColor="#000" FontSize="28" FontAttributes="Bold" />
 
-                        <CollectionView ItemsSource="{Binding Transaction.transactions}" BackgroundColor="Transparent">
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate>
-                                    <Frame Margin="10,5,10,5" BorderColor="LightGray">
-                                        <Grid>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="Auto" />
-                                                <RowDefinition Height="Auto" />
-                                                <RowDefinition Height="Auto" />
-                                            </Grid.RowDefinitions>
 
-                                            <VerticalStackLayout>
-                                                <Label Text="{Binding date}" TextColor="#000" Grid.Row="0"/>
-                                                <Label Text="{Binding categoryid.category}" TextColor="#000" Grid.Row="1" FontAttributes="Bold" FontSize="18"/>
-                                                <Label Text="{Binding amount, StringFormat='{0:N2} €'}" TextColor="#000" HorizontalTextAlignment="End" VerticalTextAlignment="Center" FontSize="25" FontAttributes="Bold" />
-                                                <Label Text="Dettagli"  TextDecorations="Underline" TextColor="#000" Grid.Column="1" FontAttributes="Italic">
-                                                    <Label.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" CommandParameter="{Binding .}"></TapGestureRecognizer>
-                                                    </Label.GestureRecognizers>
-                                                </Label>
+                                        <VerticalStackLayout>
+                                            <Label Text="{Binding date}" TextColor="#000" Grid.Row="0"/>
+                                            <Label Text="{Binding categoryid.category}" TextColor="#000" Grid.Row="1" FontAttributes="Bold" FontSize="18"/>
+                                            <Label Text="{Binding amount, StringFormat='{0:N2} €'}" TextColor="#000" HorizontalTextAlignment="End" VerticalTextAlignment="Center" FontSize="25" FontAttributes="Bold" />
+                                            <Label Text="Dettagli"  TextDecorations="Underline" TextColor="#000" Grid.Column="1" FontAttributes="Italic">
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                                                </Label.GestureRecognizers>
+                                            </Label>
 
-                                            </VerticalStackLayout>
+                                        </VerticalStackLayout>
 
-                                        </Grid>
-                                    </Frame>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-
-                    </VerticalStackLayout>
-                </Grid>
+                                    </Grid>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                    <ActivityIndicator x:Name="activityindicator" Color="Black" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" IsRunning="{Binding Loading}" ZIndex="1" IsVisible="{Binding Visibility}"/>
+                </VerticalStackLayout>
             </Grid>
-        </ScrollView>
-    </VerticalStackLayout>
+        </Grid>
+    </ScrollView>
 </ContentPage>

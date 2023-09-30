@@ -10,6 +10,21 @@ namespace Project_Work_MAUI.ViewModels
         [ObservableProperty]
         RootTransaction transaction;
 
+        [ObservableProperty]
+        bool loading;
+
+        [ObservableProperty]
+        bool visibility= false;
+
+        [ObservableProperty]
+        List<TransactionCategory> transactionCategories = new List<TransactionCategory>();
+
+        [ObservableProperty]
+        TransactionCategory selectedCategory;
+
+        [ObservableProperty]
+        float number;
+
         private decimal balance;
         public decimal Balance
         {
@@ -20,6 +35,35 @@ namespace Project_Work_MAUI.ViewModels
         {
             await LoadBalanceData();
             await LoadTranscationsData();
+            Visibility = false;
+            await LoadCategoriesData();
+        }
+        private async Task LoadCategoriesData()
+        {
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    string apiUrl = "https://bbankapidaniel.azurewebsites.net/api/transaction-type/";
+                    HttpResponseMessage response = await client.GetAsync(apiUrl);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string jsonResponse = await response.Content.ReadAsStringAsync();
+                        var result = JsonConvert.DeserializeObject<List<TransactionCategory>>(jsonResponse);
+                        TransactionCategories = result;
+                    }
+                    else
+                    {
+                        await Application.Current.MainPage.DisplayAlert("Errore", "Errore nella richiesta dei movimenti", "OK");
+                        return;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                await Application.Current.MainPage.DisplayAlert("Errore", ex.Message, "OK");
+                return;
+            }
         }
         private async Task LoadTranscationsData()
         {
@@ -28,9 +72,10 @@ namespace Project_Work_MAUI.ViewModels
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    // Restituisce tutte le transaction dell'account a cui sei loggato
-                    string apiUrl = "https://bbankapidaniel.azurewebsites.net/api/transaction/research?/num=100";
-
+                    Visibility = true;
+                    Loading = true;
+                    //logica da implementare .....................................................................
+                    string apiUrl = "https://bbankapidaniel.azurewebsites.net/api/transaction/research?num=50";
 
                     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", oauthToken);
 
@@ -43,11 +88,15 @@ namespace Project_Work_MAUI.ViewModels
                         var result = JsonConvert.DeserializeObject<RootTransaction>(jsonResponse);
 
                         Transaction = result;
+                        Loading = false;
+                        Visibility = false;
 
                     }
                     else
                     {
-                        await Application.Current.MainPage.DisplayAlert("Errore", "Errore con l'autorizzazione", "OK");
+                        await Application.Current.MainPage.DisplayAlert("Errore", "Errore nella richiesta dei movimenti", "OK");
+                        Loading = false;
+                        Visibility = false;
                         return;
                     }
                 }

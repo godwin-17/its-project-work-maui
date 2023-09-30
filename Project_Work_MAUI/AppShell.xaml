@@ -10,32 +10,27 @@
         Icon="login.svg"
         Title="Login"
         ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" /> 
-    
+        Route="MainPage" />
     <ShellContent
         Icon="registration.svg"
         Title="Registrazione"
         ContentTemplate="{DataTemplate local:RegisterPage}"
         Route="RegisterPage" />
-
     <ShellContent
         Icon="homepage.svg"
         Title="Homepage"
         ContentTemplate="{DataTemplate local:HomePage}"
         Route="HomePage" />
-
     <ShellContent
         Icon="transactions.svg"
         Title="Transazioni Generali"
         ContentTemplate="{DataTemplate local:TransazioniPage}"
         Route="TransazioniPage" />
-
     <ShellContent
         Icon="bonifico.svg"
         Title="Bonifico"
         ContentTemplate="{DataTemplate local:BonificoPage}"
         Route="BonificoPage" />
-
     <ShellContent
         Icon="ricarica.svg"
         Title="Ricarica Cellulare"
@@ -46,11 +41,13 @@
         Title="Movimenti"
         ContentTemplate="{DataTemplate local:MovimentiPage}"
         Route="MovimentiPage" />
-
-
     <ShellContent
         Icon="profile.svg"
         Title="Profilo"
         ContentTemplate="{DataTemplate local:ProfilePage}"
         Route="ProfilePage" />
+    <MenuItem
+        IconImageSource="logout.svg"
+        Command="{Binding LogoutViewModel.LogoutCommand}"
+        Text="Logout"/>
 </Shell>

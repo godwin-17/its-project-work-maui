@@ -49,12 +49,17 @@
                         HorizontalOptions="End"
                         BackgroundColor="#3A9E3E"
                         TextColor="#fff"
-                        FontSize="18"
-                        Margin="50, 0, 0, 0"
+                        FontSize="16"
+                        Margin="90, 0, 0, 0"
                         Command="{Binding TapChangePasswordCommand}"
                         >
                     </Button>   
                 </HorizontalStackLayout>
+                <Line X1="500"
+                    Y1="0"
+                    X2="0"
+                    Y2="0"
+                    Stroke="LightGray"/>
 
                 <Label
                     Text="IBAN"

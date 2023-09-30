@@ -1,4 +1,6 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Maui.Core;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Newtonsoft.Json;
 using Project_Work_MAUI.Models;
@@ -9,7 +11,7 @@ namespace Project_Work_MAUI.ViewModels
     public partial class BonificoViewModel : ObservableObject
     {
         [ObservableProperty]
-        int amount;
+        float amount;
 
         [ObservableProperty]
         string reason;
@@ -97,7 +99,10 @@ namespace Project_Work_MAUI.ViewModels
 
                     if (response.IsSuccessStatusCode)
                     {
-                        await Application.Current.MainPage.DisplayAlert("Successo", "Transazione avvenuta con successo.", "OK");
+                        //await Application.Current.MainPage.DisplayAlert("Successo", "Transazione avvenuta con successo.", "OK");
+                        var toast = Toast.Make("Bonifico avvenuto con successo", ToastDuration.Short, 12);
+                        await toast.Show();
+                        await Shell.Current.GoToAsync("//HomePage");
                         return;
                     }
                     else if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
