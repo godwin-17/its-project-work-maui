@@ -49,8 +49,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\backgroud.jpeg" />
 	  <None Remove="Resources\Images\bbank_logo.png" />
 	  <None Remove="Resources\Images\bbank_writing_logo.png" />
+	  <None Remove="Resources\Images\bg.jpg" />
 	  <None Remove="Resources\Images\gradient_bg.jpg" />
 	  <None Remove="Resources\Images\key.png" />
 	  <None Remove="Resources\Images\light_blue.jpg" />
@@ -83,10 +85,16 @@
 	  <MauiXaml Update="ChangePasswordPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="ProfilePage.xaml">
+		<MauiXaml Update="ProfilePage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+	  <MauiXaml Update="FiltriPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="RicaricaPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="MovimentiPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="TransazioniPage.xaml">
