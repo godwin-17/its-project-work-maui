@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Newtonsoft.Json;
 using Project_Work_MAUI.Models;
 using System.Net.Http.Headers;
@@ -10,6 +11,13 @@ namespace Project_Work_MAUI.ViewModels
         [ObservableProperty]
         User user;
 
+
+        [RelayCommand]
+        async Task TapChangePassword()
+        {
+            await Shell.Current.GoToAsync("ChangePasswordPage");
+        }
+        
 
         public async Task LoadData()
         {
