@@ -59,6 +59,15 @@
                     Y2="0"
                     Stroke="LightGray"/>
 
+                <Button Text="Cambia Password"
+                        BackgroundColor="#3A9E3E"
+                        TextColor="#fff"
+                        FontSize="18"
+                        HorizontalOptions="Start"
+                        Margin="0, 40, 0, 0"
+                        Command="{Binding TapChangePasswordCommand}"
+                        >
+                </Button>
             </VerticalStackLayout>
         </Grid>
     </Grid>

@@ -89,6 +89,15 @@
 	  <MauiXaml Update="FiltriPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="ChangePasswordPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+		<MauiXaml Update="ProfilePage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+	  <MauiXaml Update="FiltriPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="RicaricaPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
