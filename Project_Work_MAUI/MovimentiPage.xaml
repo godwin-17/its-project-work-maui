@@ -48,8 +48,8 @@
                         </HorizontalStackLayout>
                         <HorizontalStackLayout>
                             <Button Text="Filtra" Command="{Binding ExecuteFilteringCommand}" WidthRequest="100" HorizontalOptions="Start" Margin="10, 0, 0, 0"/>
-                            <Button Text="Export Excel" Command="{Binding ExportFileExcel}" WidthRequest="100" HorizontalOptions="Start" Margin="10, 0, 0, 0" IsEnabled="{Binding ExportEnabled}"/>
-                            <Button Text="Export CSV" Command="{Binding ExportFileCSV}" WidthRequest="100" HorizontalOptions="Start" Margin="10, 0, 0, 0" IsEnabled="{Binding ExportEnabled}"/>
+                            <Button Text="Export Excel" Command="{Binding ExportFileExcelCommand}" WidthRequest="100" HorizontalOptions="Start" Margin="10, 0, 0, 0" IsEnabled="{Binding ExportEnabled}"/>
+                            <Button Text="Export CSV" Command="{Binding ExportFileCSVCommand}" WidthRequest="100" HorizontalOptions="Start" Margin="10, 0, 0, 0" IsEnabled="{Binding ExportEnabled}"/>
                         </HorizontalStackLayout>
                     </VerticalStackLayout>
                     <CollectionView ItemsSource="{Binding Transaction.transactions}" BackgroundColor="Transparent">

@@ -1,10 +1,20 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using ClosedXML.Excel;
+using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Maui.Core;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CsvHelper;
+using DocumentFormat.OpenXml.EMMA;
+using DocumentFormat.OpenXml.VariantTypes;
+using DocumentFormat.OpenXml.Wordprocessing;
+using Microsoft.Maui.Controls.PlatformConfiguration;
 using Newtonsoft.Json;
 using Project_Work_MAUI.Models;
 using System.ComponentModel;
+using System.Globalization;
 using System.Net.Http.Headers;
 using System.Runtime.CompilerServices;
+using System.Transactions;
 
 namespace Project_Work_MAUI.ViewModels
 {
@@ -79,12 +89,14 @@ namespace Project_Work_MAUI.ViewModels
             {
                 apiUrl = $"https://bbankapidaniel.azurewebsites.net/api/transaction/research?num={NumberOfTransactions}";
                 await RicercaMovimenti(apiUrl);
+                return;
             }
             if (SelectedCategory != null)
             {
                 string categoryId = SelectedCategory.Id;
                 apiUrl = $"https://bbankapidaniel.azurewebsites.net/api/transaction/research?num={NumberOfTransactions}&categoryId={categoryId}";
                 await RicercaMovimenti(apiUrl);
+                return;
             }
             if (StartingDate > EndingDate)
             {
@@ -106,6 +118,7 @@ namespace Project_Work_MAUI.ViewModels
                 string isoEndingDate = combinedEndDate.ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
                 apiUrl = $"https://bbankapidaniel.azurewebsites.net/api/transaction/research?num={NumberOfTransactions}&startDate={isoStartingDate}&endDate={isoEndingDate}";
                 await RicercaMovimenti(apiUrl);
+                return;
             }
         }
         #endregion
@@ -113,6 +126,7 @@ namespace Project_Work_MAUI.ViewModels
         #region ricerca movimenti
         private async Task RicercaMovimenti(string apiUrl)
         {
+            ExportEnabled = false;
             string oauthToken = await SecureStorage.Default.GetAsync("oauth_token");
             try
             {
@@ -131,7 +145,7 @@ namespace Project_Work_MAUI.ViewModels
                         Transaction = result;
                         Loading = false;
                         Visibility = false;
-                        NumberOfTransactions = 0;
+                        ExportEnabled = true;
                     }
                     else
                     {
@@ -213,7 +227,7 @@ namespace Project_Work_MAUI.ViewModels
                         Transaction = result;
                         Loading = false;
                         Visibility = false;
-
+                        ExportEnabled = true;
                     }
                     else
                     {
@@ -270,5 +284,58 @@ namespace Project_Work_MAUI.ViewModels
 
         }
         #endregion
+
+        [RelayCommand]
+        public async Task ExportFileExcel()
+        {
+            PermissionStatus status = await Permissions.RequestAsync<Permissions.StorageRead>();
+            PermissionStatus status2 = await Permissions.RequestAsync<Permissions.StorageWrite>();
+            try
+            {
+                if (status != null && status2 != null)
+                {
+                    var workbook = new XLWorkbook();
+                    var worksheet = workbook.Worksheets.Add("Export Transactions");
+                    worksheet.Cell("A1").Value = "Date";
+                    worksheet.Cell("B1").Value = "Amount";
+                    worksheet.Cell("C1").Value = "Balance";
+                    worksheet.Cell("D1").Value = "Category";
+                    worksheet.Cell("E1").Value = "Typology";
+                    worksheet.Cell("F1").Value = "CategoryId";
+                    worksheet.Cell("G1").Value = "Description";
+                    int row = 2;
+                    foreach (var transaction in Transaction.transactions)
+                    {
+                        worksheet.Cell("A" + row).Value = transaction.date;
+                        worksheet.Cell("B" + row).Value = transaction.amount;
+                        worksheet.Cell("C" + row).Value = transaction.balance;
+                        worksheet.Cell("D" + row).Value = transaction.categoryid.category;
+                        worksheet.Cell("E" + row).Value = transaction.categoryid.typology;
+                        worksheet.Cell("F" + row).Value = transaction.categoryid.id;
+                        worksheet.Cell("G" + row).Value = transaction.description;
+                        row++;
+                    }
+                    //SISTEMARE IL PATH
+                    workbook.SaveAs(Path.Combine("transactions.xlsx"));
+                    var toast = Toast.Make("File saved in: root\\exportsBBank\\Transactions.xlsx", ToastDuration.Short, 12);
+                    await toast.Show();
+                }
+            }catch(Exception ex)
+            {
+                await Application.Current.MainPage.DisplayAlert("Errore", ex.Message, "OK");
+                return;
+            }
+        }
+
+        [RelayCommand]
+        public async Task ExportFileCSV(List<RootTransaction> ex)
+        {
+            List<RootTransaction> records= ex;
+            using (var writer = new StreamWriter("storage\\emulated\\0\\ExportsBBank\\Transactions.csv"))
+            using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+            {
+                csv.WriteRecords(records);
+            }
+        }
     }
 }
