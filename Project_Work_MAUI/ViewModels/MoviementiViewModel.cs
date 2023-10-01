@@ -39,42 +39,53 @@ namespace Project_Work_MAUI.ViewModels
 
         [ObservableProperty]
         TimePicker endingTimer;
+
+        [ObservableProperty]
+        bool exportEnabled;
+
+        private decimal balance;
         public MoviementiViewModel()
         {
             startingDate = DateTime.Today;
             endingDate = DateTime.Today;
-            
             startingTimer = new TimePicker();
             endingTimer = new TimePicker();
         }
-
-        private decimal balance;
         public decimal Balance
         {
             get { return balance; }
             set { SetProperty(ref balance, value); }
         }
-
-        [RelayCommand]
-        async Task ExecuteFiltering()
+        public class UserBalanceResponse
         {
+            public List<Account> accout { get; set; }
+        }
+        public class Account
+        {
+            public decimal balance { get; set; }
+        }
+
+
+        #region filtri ricerca
+        [RelayCommand]
+        public async Task ExecuteFiltering()
+        {
+            string apiUrl="";
             if (NumberOfTransactions < 1)
             {
                 await Application.Current.MainPage.DisplayAlert("Errore", "Numero di movimenti cercati non valido", "OK");
                 return;
             } else if (SelectedCategory == null && DateTime.Equals(StartingDate, EndingDate))
             {
-                await RicercaMovimenti(NumberOfTransactions);
-                return;
+                apiUrl = $"https://bbankapidaniel.azurewebsites.net/api/transaction/research?num={NumberOfTransactions}";
+                await RicercaMovimenti(apiUrl);
             }
-
             if (SelectedCategory != null)
             {
                 string categoryId = SelectedCategory.Id;
-                await RicercaMovimenti(categoryId, NumberOfTransactions);
-                return;
+                apiUrl = $"https://bbankapidaniel.azurewebsites.net/api/transaction/research?num={NumberOfTransactions}&categoryId={categoryId}";
+                await RicercaMovimenti(apiUrl);
             }
-
             if (StartingDate > EndingDate)
             {
                 await Application.Current.MainPage.DisplayAlert("Errore", "La data di inizio deve essere precedente alla data di fine.", "OK");
@@ -91,15 +102,16 @@ namespace Project_Work_MAUI.ViewModels
                 TimeSpan endingTimeSpan = EndingTimer.Time;
                 DateTime combinedStartDate = StartingDate + startingTimeSpan;
                 DateTime combinedEndDate = EndingDate + endingTimeSpan;
-
                 string isoStartingDate = combinedStartDate.ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
                 string isoEndingDate = combinedEndDate.ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
-
-                await RicercaMovimenti(isoStartingDate, isoEndingDate, NumberOfTransactions);
+                apiUrl = $"https://bbankapidaniel.azurewebsites.net/api/transaction/research?num={NumberOfTransactions}&startDate={isoStartingDate}&endDate={isoEndingDate}";
+                await RicercaMovimenti(apiUrl);
             }
         }
+        #endregion
 
-        private async Task RicercaMovimenti(int numberOfTransactions)
+        #region ricerca movimenti
+        private async Task RicercaMovimenti(string apiUrl)
         {
             string oauthToken = await SecureStorage.Default.GetAsync("oauth_token");
             try
@@ -109,14 +121,9 @@ namespace Project_Work_MAUI.ViewModels
                     Transaction = null;
                     Visibility = true;
                     Loading = true;
-                    string apiUrl = $"https://bbankapidaniel.azurewebsites.net/api/transaction/research?num={numberOfTransactions}";
-
                     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", oauthToken);
-
                     HttpResponseMessage response = await client.GetAsync(apiUrl);
-
                     var responseContent = await response.Content.ReadAsStringAsync();
-
                     if (response.IsSuccessStatusCode)
                     {
                         string jsonResponse = await response.Content.ReadAsStringAsync();
@@ -141,91 +148,7 @@ namespace Project_Work_MAUI.ViewModels
                 return;
             }
         }
-        private async Task RicercaMovimenti(string selectedCategory, int numberOfTransactions)
-        {
-            string oauthToken = await SecureStorage.Default.GetAsync("oauth_token");
-            try
-            {
-                using (HttpClient client = new HttpClient())
-                {
-                    Transaction = null;
-                    Visibility = true;
-                    Loading = true;
-                    string apiUrl = $"https://bbankapidaniel.azurewebsites.net/api/transaction/research?num={numberOfTransactions}&categoryId={selectedCategory}";
-
-                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", oauthToken);
-
-                    HttpResponseMessage response = await client.GetAsync(apiUrl);
-
-                    var responseContent = await response.Content.ReadAsStringAsync();
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        string jsonResponse = await response.Content.ReadAsStringAsync();
-                        var result = JsonConvert.DeserializeObject<RootTransaction>(jsonResponse);
-                        Transaction = result;
-                        Loading = false;
-                        Visibility = false;
-                        NumberOfTransactions = 0;
-                    }
-                    else
-                    {
-                        await Application.Current.MainPage.DisplayAlert("Errore", "Errore nella richiesta dei movimenti", "OK");
-                        Loading = false;
-                        Visibility = false;
-                        return;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                await Application.Current.MainPage.DisplayAlert("Errore", ex.Message, "OK");
-                return;
-            }
-        }
-
-        private async Task RicercaMovimenti(string startingDate, string endingDate, int numberOfTransactions)
-        {
-            string oauthToken = await SecureStorage.Default.GetAsync("oauth_token");
-            try
-            {
-                using (HttpClient client = new HttpClient())
-                {
-                    Transaction = null;
-                    Visibility = true;
-                    Loading = true;
-                    string apiUrl = $"https://bbankapidaniel.azurewebsites.net/api/transaction/research?num={numberOfTransactions}&startDate={startingDate}&endDate={endingDate}";
-
-                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", oauthToken);
-
-                    HttpResponseMessage response = await client.GetAsync(apiUrl);
-
-                    var responseContent = await response.Content.ReadAsStringAsync();
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        string jsonResponse = await response.Content.ReadAsStringAsync();
-                        var result = JsonConvert.DeserializeObject<RootTransaction>(jsonResponse);
-                        Transaction = result;
-                        Loading = false;
-                        Visibility = false;
-                        NumberOfTransactions = 0;
-                    }
-                    else
-                    {
-                        await Application.Current.MainPage.DisplayAlert("Errore", "Errore nella richiesta dei movimenti", "OK");
-                        Loading = false;
-                        Visibility = false;
-                        return;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                await Application.Current.MainPage.DisplayAlert("Errore", ex.Message, "OK");
-                return;
-            }
-        }
+        #endregion
 
         public async Task LoadData()
         {
@@ -234,6 +157,8 @@ namespace Project_Work_MAUI.ViewModels
             Visibility = false;
             await LoadCategoriesData();
         }
+
+        #region carica categorie
         private async Task LoadCategoriesData()
         {
             try
@@ -261,6 +186,9 @@ namespace Project_Work_MAUI.ViewModels
                 return;
             }
         }
+        #endregion
+
+        #region carica movimenti iniziali
         private async Task LoadTranscationsData()
         {
             string oauthToken = await SecureStorage.Default.GetAsync("oauth_token");
@@ -270,7 +198,6 @@ namespace Project_Work_MAUI.ViewModels
                 {
                     Visibility = true;
                     Loading = true;
-                    //logica da implementare .....................................................................
                     string apiUrl = "https://bbankapidaniel.azurewebsites.net/api/transaction/research?num=50";
 
                     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", oauthToken);
@@ -303,15 +230,9 @@ namespace Project_Work_MAUI.ViewModels
                 return;
             }
         }
-        public class UserBalanceResponse
-        {
-            public List<Account> accout { get; set; }
-        }
+        #endregion
 
-        public class Account
-        {
-            public decimal balance { get; set; }
-        }
+        #region carica balance
         private async Task LoadBalanceData()
         {
             string oauthToken = await SecureStorage.Default.GetAsync("oauth_token");
@@ -348,5 +269,6 @@ namespace Project_Work_MAUI.ViewModels
             }
 
         }
+        #endregion
     }
 }

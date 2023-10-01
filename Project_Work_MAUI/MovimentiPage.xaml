@@ -15,27 +15,42 @@
                     <VerticalStackLayout>
                         
                         <HorizontalStackLayout>
-                                <Label Text="Data Inizio" VerticalOptions="Center" FontAttributes="Bold" />
+                            <Label Text="Data Inizio" VerticalOptions="Center" FontAttributes="Bold" />
                             <DatePicker
                                 MinimumDate="01/01/2022"
                                 Date="{Binding StartingDate}" />
                             <TimePicker
                                 Time="{Binding StartingTimer}"
-                                Margin="0, 0, 70, 0" />
+                                Margin="0, 0, 10, 0" />
 
                             <Label Text="Data Fine" VerticalOptions="Center" FontAttributes="Bold" />
-                                <DatePicker MinimumDate="01/01/2022" Date="{Binding EndingDate}" />
-                            <TimePicker Time="{Binding EndingTimer}" />
+                            <DatePicker 
+                                MinimumDate="01/01/2022" 
+                                Date="{Binding EndingDate}" />
+                            <TimePicker 
+                                Time="{Binding EndingTimer}" />
                         </HorizontalStackLayout>
 
-                        <Label Text="Categoria" VerticalOptions="Center" FontAttributes="Bold" />
-                        <Picker Title="Categoria" FontSize="18" HorizontalOptions="Start" Margin="0, 0, 0, 0" ItemsSource="{Binding TransactionCategories}" ItemDisplayBinding="{Binding Category}" SelectedItem="{Binding SelectedCategory, Mode=TwoWay}" TextColor="#000">
-                        </Picker>
-                            
-                        <Label Text="N. transazioni" VerticalOptions="Center" FontAttributes="Bold" />
-                        <Entry Placeholder="N. Transazioni" Text="{Binding NumberOfTransactions}"  TextColor="#000" Keyboard="Numeric" FontSize="18"/>
-                            
-                        <Button Text="Filtra" Command="{Binding ExecuteFilteringCommand}" WidthRequest="100" HorizontalOptions="Start" Margin="15, 0, 0, 0"></Button>
+                        <HorizontalStackLayout>
+                            <Label Text="Categoria" VerticalOptions="Center" Margin="0,0,150,0" FontAttributes="Bold" />
+                            <Label Text="N. transazioni" VerticalOptions="Center" FontAttributes="Bold" />
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout>
+                            <Picker Title="Categoria" 
+                                    WidthRequest="200" FontSize="18" 
+                                    HorizontalOptions="Start" 
+                                    Margin="0, 0, 0, 0" 
+                                    ItemsSource="{Binding TransactionCategories}" 
+                                    ItemDisplayBinding="{Binding Category}" 
+                                    SelectedItem="{Binding SelectedCategory, Mode=TwoWay}" 
+                                    TextColor="#000"/>
+                            <Entry Placeholder="N. Transazioni" Text="{Binding NumberOfTransactions}"  TextColor="#000" Keyboard="Numeric" FontSize="18"/>
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout>
+                            <Button Text="Filtra" Command="{Binding ExecuteFilteringCommand}" WidthRequest="100" HorizontalOptions="Start" Margin="10, 0, 0, 0"/>
+                            <Button Text="Export Excel" Command="{Binding ExportFileExcel}" WidthRequest="100" HorizontalOptions="Start" Margin="10, 0, 0, 0" IsEnabled="{Binding ExportEnabled}"/>
+                            <Button Text="Export CSV" Command="{Binding ExportFileCSV}" WidthRequest="100" HorizontalOptions="Start" Margin="10, 0, 0, 0" IsEnabled="{Binding ExportEnabled}"/>
+                        </HorizontalStackLayout>
                     </VerticalStackLayout>
                     <CollectionView ItemsSource="{Binding Transaction.transactions}" BackgroundColor="Transparent">
                         <CollectionView.ItemTemplate>
