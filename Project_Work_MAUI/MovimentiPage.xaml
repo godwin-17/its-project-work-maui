@@ -12,13 +12,31 @@
             <Grid RowDefinitions="*, auto" Margin="10">
                 <VerticalStackLayout BackgroundColor="Transparent">
                     <Label Text="Lista movimenti" Margin="10" TextColor="#000" FontSize="28" FontAttributes="Bold" />
-                    <HorizontalStackLayout>
-                        <DatePicker />
-                        <TimePicker />
-                        <Picker Title="Categoria" FontSize="18" Margin="0, 0, 0, 0" ItemsSource="{Binding TransactionCategories}" ItemDisplayBinding="{Binding Category}" SelectedItem="{Binding SelectedCategory, Mode=TwoWay}" TextColor="#000">
+                    <VerticalStackLayout>
+                        
+                        <HorizontalStackLayout>
+                                <Label Text="Data Inizio" VerticalOptions="Center" FontAttributes="Bold" />
+                            <DatePicker
+                                MinimumDate="01/01/2022"
+                                Date="{Binding StartingDate}" />
+                            <TimePicker
+                                Time="{Binding StartingTimer}"
+                                Margin="0, 0, 70, 0" />
+
+                            <Label Text="Data Fine" VerticalOptions="Center" FontAttributes="Bold" />
+                                <DatePicker MinimumDate="01/01/2022" Date="{Binding EndingDate}" />
+                            <TimePicker Time="{Binding EndingTimer}" />
+                        </HorizontalStackLayout>
+
+                        <Label Text="Categoria" VerticalOptions="Center" FontAttributes="Bold" />
+                        <Picker Title="Categoria" FontSize="18" HorizontalOptions="Start" Margin="0, 0, 0, 0" ItemsSource="{Binding TransactionCategories}" ItemDisplayBinding="{Binding Category}" SelectedItem="{Binding SelectedCategory, Mode=TwoWay}" TextColor="#000">
                         </Picker>
-                        <Entry Placeholder="N. Transazioni" Text="{Binding Number}" TextColor="#000" Keyboard="Numeric" FontSize="18"/>
-                    </HorizontalStackLayout>
+                            
+                        <Label Text="N. transazioni" VerticalOptions="Center" FontAttributes="Bold" />
+                        <Entry Placeholder="N. Transazioni" Text="{Binding NumberOfTransactions}"  TextColor="#000" Keyboard="Numeric" FontSize="18"/>
+                            
+                        <Button Text="Filtra" Command="{Binding ExecuteFilteringCommand}" WidthRequest="100" HorizontalOptions="Start" Margin="15, 0, 0, 0"></Button>
+                    </VerticalStackLayout>
                     <CollectionView ItemsSource="{Binding Transaction.transactions}" BackgroundColor="Transparent">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
