@@ -15,6 +15,7 @@ using System.Globalization;
 using System.Net.Http.Headers;
 using System.Runtime.CompilerServices;
 using System.Transactions;
+using Transaction = Project_Work_MAUI.Models.Transaction;
 
 namespace Project_Work_MAUI.ViewModels
 {
@@ -315,9 +316,22 @@ namespace Project_Work_MAUI.ViewModels
                         worksheet.Cell("G" + row).Value = transaction.description;
                         row++;
                     }
-                    //SISTEMARE IL PATH
-                    workbook.SaveAs(Path.Combine("transactions.xlsx"));
-                    var toast = Toast.Make("File saved in: root\\exportsBBank\\Transactions.xlsx", ToastDuration.Short, 12);
+                    var basePath = Path.Combine(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath, Android.OS.Environment.DirectoryDownloads, "BBank");
+                    string baseFileName = "transactions.xlsx";
+                    string path = Path.Combine(basePath, baseFileName);
+
+                    int index = 1;
+                    while (File.Exists(path))
+                    {
+                        string newFileName = Path.GetFileNameWithoutExtension(baseFileName)
+                                           + "_" + index
+                                           + Path.GetExtension(baseFileName);
+                        path = Path.Combine(basePath, newFileName);
+                        index++;
+                    }
+
+                    workbook.SaveAs(path);
+                    var toast = Toast.Make("File saved in "+ path, ToastDuration.Short, 12);
                     await toast.Show();
                 }
             }catch(Exception ex)
@@ -328,14 +342,28 @@ namespace Project_Work_MAUI.ViewModels
         }
 
         [RelayCommand]
-        public async Task ExportFileCSV(List<RootTransaction> ex)
+        public async Task ExportFileCSV()
         {
-            List<RootTransaction> records= ex;
-            using (var writer = new StreamWriter("storage\\emulated\\0\\ExportsBBank\\Transactions.csv"))
+            List<Transaction> records= Transaction.transactions;
+            var basePath = Path.Combine(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath, Android.OS.Environment.DirectoryDownloads, "BBank");
+            string baseFileName = "transactions.csv";
+            string path = Path.Combine(basePath, baseFileName);
+            int index = 1;
+            while (File.Exists(path))
+            {
+                string newFileName = Path.GetFileNameWithoutExtension(baseFileName)
+                                   + "_" + index
+                                   + Path.GetExtension(baseFileName);
+                path = Path.Combine(basePath, newFileName);
+                index++;
+            }
+            using (var writer = new StreamWriter(path))
             using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
             {
                 csv.WriteRecords(records);
             }
+            var toast = Toast.Make("File saved in " + path, ToastDuration.Short, 12);
+            await toast.Show();
         }
     }
 }
