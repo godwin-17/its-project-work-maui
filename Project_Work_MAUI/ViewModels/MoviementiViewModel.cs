@@ -333,6 +333,7 @@ namespace Project_Work_MAUI.ViewModels
                     workbook.SaveAs(path);
                     var toast = Toast.Make("File saved in "+ path, ToastDuration.Short, 12);
                     await toast.Show();
+                    await Launcher.Default.OpenAsync(new OpenFileRequest("Opening File", new ReadOnlyFile(path)));
                 }
             }catch(Exception ex)
             {
@@ -364,6 +365,7 @@ namespace Project_Work_MAUI.ViewModels
             }
             var toast = Toast.Make("File saved in " + path, ToastDuration.Short, 12);
             await toast.Show();
+            await Launcher.Default.OpenAsync(new OpenFileRequest("Opening File", new ReadOnlyFile(path)));
         }
     }
 }
