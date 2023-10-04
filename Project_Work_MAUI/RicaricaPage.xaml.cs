@@ -18,4 +18,12 @@ public partial class RicaricaPage : ContentPage
 
 		(BindingContext as RicaricaViewModel)?.SetMobileProvider(mobileProvider);
 	}
+
+    private void AmountChanged(object sender, CheckedChangedEventArgs e)
+    {
+		RadioButton amountRadioButton = sender as RadioButton;
+		int amount = Int32.Parse((string)amountRadioButton.Value);
+
+		(BindingContext as RicaricaViewModel)?.SetAmount(amount);
+    }
 }

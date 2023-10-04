@@ -65,6 +65,11 @@ namespace Project_Work_MAUI.ViewModels
             SelectedProvider = provider;
         }
 
+        public void SetAmount(int amount)
+        {
+            Amount = amount;
+        }
+
         public string CreateDescription(string telefono, string provider)
         {
             return $"Ricarica telefono al numero {telefono}. Operatore telefonico {provider}";
