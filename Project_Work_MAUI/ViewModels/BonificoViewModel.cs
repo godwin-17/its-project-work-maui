@@ -36,7 +36,6 @@ namespace Project_Work_MAUI.ViewModels
         public BonificoViewModel()
         {
             SelectedCategory = transactionCategories[0];
-            Iban = "ITL8Y8CR2YC9WUWYCGIJNXYVWNMCG";
         }
 
         [RelayCommand]
@@ -57,12 +56,6 @@ namespace Project_Work_MAUI.ViewModels
             if (Amount <= 0)
             {
                 await Application.Current.MainPage.DisplayAlert("Errore", "Inserire un importo positivo", "OK");
-                return;
-            }
-
-            if (SelectedCategory == null)
-            {
-                await Application.Current.MainPage.DisplayAlert("Errore", "Selezionare una categoria", "OK");
                 return;
             }
 
