@@ -15,6 +15,7 @@ using System.Globalization;
 using System.Net.Http.Headers;
 using System.Runtime.CompilerServices;
 using System.Transactions;
+using System.Web;
 using Transaction = Project_Work_MAUI.Models.Transaction;
 
 namespace Project_Work_MAUI.ViewModels
@@ -46,10 +47,10 @@ namespace Project_Work_MAUI.ViewModels
         DateTime endingDate;
 
         [ObservableProperty]
-        TimePicker startingTimer;
+        TimeSpan startingTimer;
 
         [ObservableProperty]
-        TimePicker endingTimer;
+        TimeSpan endingTimer;
 
         [ObservableProperty]
         bool exportEnabled;
@@ -59,8 +60,8 @@ namespace Project_Work_MAUI.ViewModels
         {
             startingDate = DateTime.Today;
             endingDate = DateTime.Today;
-            startingTimer = new TimePicker();
-            endingTimer = new TimePicker();
+            startingTimer = new TimeSpan();
+            endingTimer = new TimeSpan();
         }
         public decimal Balance
         {
@@ -81,12 +82,24 @@ namespace Project_Work_MAUI.ViewModels
         [RelayCommand]
         public async Task ExecuteFiltering()
         {
+            TimeSpan startingTimeSpan = StartingTimer;
+            TimeSpan endingTimeSpan = EndingTimer;
+
+            DateTime combinedStartDate = StartingDate + startingTimeSpan;
+            DateTime combinedEndDate = EndingDate + endingTimeSpan;
+
+            string isoStartingDate = combinedStartDate.ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
+            string isoEndingDate = combinedEndDate.ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
+
+            string encodedStartDate = HttpUtility.UrlEncode(isoStartingDate);
+            string encodedEndDate = HttpUtility.UrlEncode(isoEndingDate);
+
             string apiUrl="";
             if (NumberOfTransactions < 1)
             {
                 await Application.Current.MainPage.DisplayAlert("Errore", "Numero di movimenti cercati non valido", "OK");
                 return;
-            } else if (SelectedCategory == null && DateTime.Equals(StartingDate, EndingDate))
+            } else if (SelectedCategory == null && DateTime.Equals(combinedStartDate, combinedEndDate))
             {
                 apiUrl = $"https://bbankapidaniel.azurewebsites.net/api/transaction/research?num={NumberOfTransactions}";
                 await RicercaMovimenti(apiUrl);
@@ -99,25 +112,19 @@ namespace Project_Work_MAUI.ViewModels
                 await RicercaMovimenti(apiUrl);
                 return;
             }
-            if (StartingDate > EndingDate)
+            if (combinedStartDate > combinedEndDate)
             {
                 await Application.Current.MainPage.DisplayAlert("Errore", "La data di inizio deve essere precedente alla data di fine.", "OK");
                 return;
             }
-            else if (DateTime.Equals(StartingDate, EndingDate))
+            else if (DateTime.Equals(combinedStartDate, combinedEndDate))
             {
                 await Application.Current.MainPage.DisplayAlert("Errore", "La data di inizio e di fine non possono essere uguali.", "OK");
                 return;
             }
             else
             {
-                TimeSpan startingTimeSpan = StartingTimer.Time;
-                TimeSpan endingTimeSpan = EndingTimer.Time;
-                DateTime combinedStartDate = StartingDate + startingTimeSpan;
-                DateTime combinedEndDate = EndingDate + endingTimeSpan;
-                string isoStartingDate = combinedStartDate.ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
-                string isoEndingDate = combinedEndDate.ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
-                apiUrl = $"https://bbankapidaniel.azurewebsites.net/api/transaction/research?num={NumberOfTransactions}&startDate={isoStartingDate}&endDate={isoEndingDate}";
+                apiUrl = $"https://bbankapidaniel.azurewebsites.net/api/transaction/research?num={NumberOfTransactions}&startDate={encodedStartDate}&endDate={encodedEndDate}";
                 await RicercaMovimenti(apiUrl);
                 return;
             }

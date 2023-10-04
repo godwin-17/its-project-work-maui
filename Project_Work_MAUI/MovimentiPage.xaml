@@ -20,7 +20,7 @@
                                 MinimumDate="01/01/2022"
                                 Date="{Binding StartingDate}" />
                             <TimePicker
-                                Time="{Binding StartingTimer}"
+                                Time="{Binding StartingTimer, Mode=TwoWay}"
                                 Margin="0, 0, 10, 0" />
 
                             <Label Text="Data Fine" VerticalOptions="Center" FontAttributes="Bold" />
@@ -28,7 +28,7 @@
                                 MinimumDate="01/01/2022" 
                                 Date="{Binding EndingDate}" />
                             <TimePicker 
-                                Time="{Binding EndingTimer}" />
+                                Time="{Binding EndingTimer, Mode=TwoWay}" />
                         </HorizontalStackLayout>
 
                         <HorizontalStackLayout>
