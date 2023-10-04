@@ -15,9 +15,6 @@ namespace Project_Work_MAUI.ViewModels
         int amount;
 
         [ObservableProperty]
-        string reason;
-
-        [ObservableProperty]
         List<TransactionCategory> transactionCategories = new List<TransactionCategory>
         {
             new TransactionCategory
@@ -48,12 +45,6 @@ namespace Project_Work_MAUI.ViewModels
                 return;
             }
 
-            if (string.IsNullOrEmpty(Reason))
-            {
-                await Application.Current.MainPage.DisplayAlert("Errore", "Inserire una causale", "OK");
-                return;
-            }
-
             if (Amount <= 0)
             {
                 await Application.Current.MainPage.DisplayAlert("Errore", "Inserire un importo positivo", "OK");
@@ -80,7 +71,10 @@ namespace Project_Work_MAUI.ViewModels
             SelectedProvider = provider;
         }
 
-
+        public string CreateDescription(string telefono, string provider)
+        {
+            return $"Ricarica telefono al numero {telefono}. Operatore telefonico {provider}";
+        }
 
         private async Task MakeTransaction()
         {
@@ -92,11 +86,13 @@ namespace Project_Work_MAUI.ViewModels
                     string apiUrl = "https://bbankapidaniel.azurewebsites.net/api/transaction";
 
 
+                    string reason = CreateDescription(Telefono, SelectedProvider);
+
                     TransactionRequest transactionData = new TransactionRequest
                     {
                         amount = Amount,
                         categoryid = SelectedCategory.Id,
-                        description = Reason
+                        description = reason
                     };
 
 
