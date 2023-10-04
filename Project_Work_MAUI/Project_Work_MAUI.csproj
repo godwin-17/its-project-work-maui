@@ -63,11 +63,18 @@
 	  <None Remove="Resources\Images\logout.svg" />
 	  <None Remove="Resources\Images\mail.png" />
 	  <None Remove="Resources\Images\movimenti.svg" />
+	  <None Remove="Resources\Images\OperatoriTelefonici\fastweb_logo.svg" />
+	  <None Remove="Resources\Images\OperatoriTelefonici\ho_logo.svg" />
+	  <None Remove="Resources\Images\OperatoriTelefonici\spusu_logo.svg" />
+	  <None Remove="Resources\Images\OperatoriTelefonici\tiscali_logo.svg" />
 	  <None Remove="Resources\Images\profile.svg" />
 	  <None Remove="Resources\Images\ricarica.svg" />
+	  <None Remove="Resources\Images\tim_logo.svg" />
 	  <None Remove="Resources\Images\transactions.svg" />
 	  <None Remove="Resources\Images\user.png" />
+	  <None Remove="Resources\Images\vodafone_logo.svg" />
 	  <None Remove="Resources\Images\white.jpg" />
+	  <None Remove="Resources\Images\windtre_logo.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -126,6 +133,16 @@
 	  <MauiXaml Update="RegisterPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiImage Include="Resources\Images\OperatoriTelefonici\fastweb_logo.svg" />
+	  <MauiImage Include="Resources\Images\OperatoriTelefonici\ho_logo.svg" />
+	  <MauiImage Include="Resources\Images\OperatoriTelefonici\spusu_logo.svg" />
+	  <MauiImage Include="Resources\Images\OperatoriTelefonici\tim_logo.svg" />
+	  <MauiImage Include="Resources\Images\OperatoriTelefonici\tiscali_logo.svg" />
+	  <MauiImage Include="Resources\Images\OperatoriTelefonici\vodafone_logo.svg" />
+	  <MauiImage Include="Resources\Images\OperatoriTelefonici\windtre_logo.svg" />
 	</ItemGroup>
 
 </Project>
