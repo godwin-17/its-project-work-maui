@@ -88,17 +88,7 @@
                         </HorizontalStackLayout>
                     </VerticalStackLayout>
 
-                    <Line X1="500"
-                    Y1="0"
-                    X2="0"
-                    Y2="0"
-                    Stroke="LightGray"/>
-
-                    <Label Text="Categoria" TextColor="#000" FontSize="20" FontAttributes="Bold" Margin="0, 20, 0, 0"/>
-                    <Picker Title="Categoria" FontSize="18" Margin="0, 0, 0, 0" ItemsSource="{Binding TransactionCategories}" ItemDisplayBinding="{Binding Category}" SelectedItem="{Binding SelectedCategory, Mode=TwoWay}" TextColor="#000">
-                    </Picker>
-
-                    <Button BackgroundColor="Green" Command="{Binding TransactionCommand}" Text="Prosegui" TextColor="#fff" FontSize="16" FontAttributes="Bold" Margin="0, 15, 0, 0"></Button>
+                    <Button BackgroundColor="Green" Command="{Binding TransactionCommand}" Text="Prosegui" TextColor="#fff" FontSize="16" FontAttributes="Bold" Margin="0, 25, 0, 0"></Button>
                 </VerticalStackLayout>
             </Grid>
         </Grid>

@@ -57,12 +57,6 @@ namespace Project_Work_MAUI.ViewModels
                 return;
             }
 
-            if (SelectedCategory == null)
-            {
-                await Application.Current.MainPage.DisplayAlert("Errore", "Selezionare una categoria", "OK");
-                return;
-            }
-
             await MakeTransaction();
         }
 
