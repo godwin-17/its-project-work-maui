@@ -75,6 +75,13 @@ namespace Project_Work_MAUI.ViewModels
             await MakeTransaction();
         }
 
+        public void SetMobileProvider(string provider)
+        {
+            SelectedProvider = provider;
+        }
+
+
+
         private async Task MakeTransaction()
         {
             string oauthToken = await SecureStorage.Default.GetAsync("oauth_token");

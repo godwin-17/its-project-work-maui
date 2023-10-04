@@ -9,4 +9,13 @@ public partial class RicaricaPage : ContentPage
 		InitializeComponent();
 		BindingContext = vm;
 	}
+
+    private void RadioButton_CheckedChanged(object sender, CheckedChangedEventArgs e)
+    {
+		RadioButton radioButton = sender as RadioButton;
+
+		string mobileProvider = (string)radioButton.Value;
+
+		(BindingContext as RicaricaViewModel)?.SetMobileProvider(mobileProvider);
+	}
 }
