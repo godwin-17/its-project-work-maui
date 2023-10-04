@@ -49,6 +49,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\bbank_logo2.svg" />
+	  <None Remove="Resources\Images\bbank_logo3.svg" />
 	  <None Remove="Resources\Images\bg3.jpg" />
 	  <None Remove="Resources\Images\bbank_logo.png" />
 	  <None Remove="Resources\Images\bbank_writing_logo.png" />
