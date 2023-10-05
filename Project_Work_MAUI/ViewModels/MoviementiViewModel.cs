@@ -300,6 +300,18 @@ namespace Project_Work_MAUI.ViewModels
         #endregion
 
         [RelayCommand]
+        public async Task ResetFilters()
+        {
+            SelectedCategory = null;
+            NumberOfTransactions = 0;
+            StartingDate = DateTime.Today;
+            EndingDate = DateTime.Today;
+            StartingTimer = new TimeSpan();
+            EndingTimer = new TimeSpan();
+            IsBalanceVisible = false;
+        }
+
+        [RelayCommand]
         public async Task ExportFileExcel()
         {
             PermissionStatus status = await Permissions.RequestAsync<Permissions.StorageRead>();
