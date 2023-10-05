@@ -27,7 +27,7 @@
                         </HorizontalStackLayout.GestureRecognizers>
                     </HorizontalStackLayout>
 
-                    <Border Margin="10, 40" Padding="40, 40" StrokeShape="RoundRectangle 10,10,10,10" Stroke="transparent">
+                    <Border Margin="10, 40" Padding="30, 40" StrokeShape="RoundRectangle 10,10,10,10" Stroke="transparent">
                         <Border.Shadow>
                             <Shadow Brush="Black" Offset="20,20" Radius="40" Opacity="0.8"/>
                         </Border.Shadow>
@@ -39,7 +39,7 @@
                         </Border.Background>
                         <VerticalStackLayout>
                             <HorizontalStackLayout>
-                                <Label Text="Conto Corrente" TextColor="#000" Padding="0,0,120,0"/>
+                                <Label Text="Conto Corrente" TextColor="#000" Padding="0,0,140,0"/>
                                 <Image Source="bbank_logo3.svg" MaximumWidthRequest="30" HorizontalOptions="End"/>
                             </HorizontalStackLayout>
                             <HorizontalStackLayout Spacing="5">

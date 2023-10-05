@@ -232,7 +232,7 @@ namespace Project_Work_MAUI.ViewModels
                 {
                     Visibility = true;
                     Loading = true;
-                    string apiUrl = "https://bbankapidaniel.azurewebsites.net/api/transaction/research?num=50";
+                    string apiUrl = "https://bbankapidaniel.azurewebsites.net/api/transaction/research?num=20";
 
                     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", oauthToken);
 

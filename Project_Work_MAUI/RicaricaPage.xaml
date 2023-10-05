@@ -57,11 +57,11 @@
                         <HorizontalStackLayout Margin="0, 10, 0, 0">
                             <!-- First Column -->
                             <RadioButton TextColor="#000" GroupName="opeatori" Value="TIM" CheckedChanged="RadioButton_CheckedChanged" />
-                            <Image Source="tim_logo.png" WidthRequest="100" Margin="0, 0, 90, 0"/>
+                            <Image Source="tim_logo.png" WidthRequest="60" Margin="0, 0, 40, 0"/>
 
                             <!-- Second Column -->
                             <RadioButton TextColor="#000" GroupName="opeatori" Value="Fastweb" CheckedChanged="RadioButton_CheckedChanged" />
-                            <Image Source="fastweb_logo.png" WidthRequest="110" />
+                        <Image Source="fastweb_logo.png" WidthRequest="60" />
                             <!--<Image Source="vodafone_logo.png" WidthRequest="110" />-->
                         </HorizontalStackLayout>
 
@@ -69,33 +69,33 @@
                         <HorizontalStackLayout Margin="0, 10, 0, 0">
                             <!-- First Column -->
                             <RadioButton TextColor="#000" GroupName="opeatori" Value="Iliad" CheckedChanged="RadioButton_CheckedChanged" />
-                            <Image Source="iliad_logo.png" WidthRequest="100" Margin="0, 0, 90, 0" />
+                        <Image Source="iliad_logo.png" WidthRequest="60" Margin="0, 0, 40, 0" />
 
                             <!-- Second Column -->
                             <RadioButton TextColor="#000" GroupName="opeatori" Value="WINDTRE" CheckedChanged="RadioButton_CheckedChanged" />
-                            <Image Source="windtre_logo.png" WidthRequest="100"/>
+                        <Image Source="windtre_logo.png" WidthRequest="60"/>
                         </HorizontalStackLayout>
 
                         <!-- Third Row -->
                         <HorizontalStackLayout Margin="0, 10, 0, 0">
                             <!-- First Column -->
                             <RadioButton TextColor="#000" GroupName="opeatori" Value="Vodafone" CheckedChanged="RadioButton_CheckedChanged" />
-                            <Image Source="vodafone_logo.png" WidthRequest="120" Margin="0, 0, 70, 0"/>
+                        <Image Source="vodafone_logo.png" WidthRequest="60" Margin="0, 0, 40, 0"/>
 
                             <!-- Second Column -->
                             <RadioButton TextColor="#000" GroupName="opeatori" Value="Spusu" CheckedChanged="RadioButton_CheckedChanged" />
-                            <Image Source="spusu_logo.png" WidthRequest="100"/>
+                        <Image Source="spusu_logo.png" WidthRequest="60"/>
                         </HorizontalStackLayout>
 
                         <!-- Fourth Row -->
                         <HorizontalStackLayout Margin="0, 10, 0, 0">
                             <!-- First Column -->
                             <RadioButton TextColor="#000" GroupName="opeatori" Value="Ho" CheckedChanged="RadioButton_CheckedChanged" />
-                            <Image Source="ho_logo.png" WidthRequest="50" Margin="0, 0, 140, 0"/>
+                        <Image Source="ho_logo.png" WidthRequest="60" Margin="0, 0, 40, 0"/>
 
                             <!-- Second Column -->
                             <RadioButton TextColor="#000" GroupName="opeatori" Value="Tiscali" CheckedChanged="RadioButton_CheckedChanged" />
-                            <Image Source="tiscali_logo.png" WidthRequest="100"/>
+                            <Image Source="tiscali_logo.png" WidthRequest="60"/>
                         </HorizontalStackLayout>
                     </VerticalStackLayout>
 
