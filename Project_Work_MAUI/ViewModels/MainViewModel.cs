@@ -35,7 +35,7 @@ namespace Project_Work_MAUI.ViewModels
             bool showAlert = true;
 
 
-            dispatcher.StartTimer(TimeSpan.FromSeconds(300), () =>
+            dispatcher.StartTimer(TimeSpan.FromSeconds(30), () =>
             {
                 if (pageDisappearing)
                 {
@@ -127,8 +127,6 @@ namespace Project_Work_MAUI.ViewModels
                         var toast = Toast.Make("Logged In", ToastDuration.Short, 12);
                         Password = "";
                         await toast.Show();
-                        //TokenProvider.Token = user.token;
-                        //await Application.Current.MainPage.DisplayAlert("Successo", "Login avvenuto con successo.", "OK");
                     }
                     else
                     {
@@ -145,10 +143,6 @@ namespace Project_Work_MAUI.ViewModels
                 }
             }
 
-            //await Shell.Current.GoToAsync("//HomePage", new Dictionary<string, object>
-            //{
-            //    ["User"] = user,
-            //});
             await Shell.Current.GoToAsync("//HomePage");
         }
 

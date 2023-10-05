@@ -55,6 +55,12 @@ namespace Project_Work_MAUI.ViewModels
         [ObservableProperty]
         bool exportEnabled;
 
+        [ObservableProperty]
+        float saldoFinale;
+
+        [ObservableProperty]
+        bool isBalanceVisible = false;
+
         private decimal balance;
         public MoviementiViewModel()
         {
@@ -110,6 +116,7 @@ namespace Project_Work_MAUI.ViewModels
                 string categoryId = SelectedCategory.Id;
                 apiUrl = $"https://bbankapidaniel.azurewebsites.net/api/transaction/research?num={NumberOfTransactions}&categoryId={categoryId}";
                 await RicercaMovimenti(apiUrl);
+                IsBalanceVisible = false;
                 return;
             }
             if (combinedStartDate > combinedEndDate)
@@ -126,6 +133,7 @@ namespace Project_Work_MAUI.ViewModels
             {
                 apiUrl = $"https://bbankapidaniel.azurewebsites.net/api/transaction/research?num={NumberOfTransactions}&startDate={encodedStartDate}&endDate={encodedEndDate}";
                 await RicercaMovimenti(apiUrl);
+                IsBalanceVisible = false;
                 return;
             }
         }
@@ -150,6 +158,10 @@ namespace Project_Work_MAUI.ViewModels
                     {
                         string jsonResponse = await response.Content.ReadAsStringAsync();
                         var result = JsonConvert.DeserializeObject<RootTransaction>(jsonResponse);
+
+                        SaldoFinale = (float)result.transactions[0].balance;
+                        IsBalanceVisible = true;
+
                         Transaction = result;
                         Loading = false;
                         Visibility = false;
