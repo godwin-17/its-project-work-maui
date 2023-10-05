@@ -4,17 +4,11 @@ using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CsvHelper;
-using DocumentFormat.OpenXml.EMMA;
-using DocumentFormat.OpenXml.VariantTypes;
-using DocumentFormat.OpenXml.Wordprocessing;
 using Microsoft.Maui.Controls.PlatformConfiguration;
 using Newtonsoft.Json;
 using Project_Work_MAUI.Models;
-using System.ComponentModel;
 using System.Globalization;
 using System.Net.Http.Headers;
-using System.Runtime.CompilerServices;
-using System.Transactions;
 using System.Web;
 using Transaction = Project_Work_MAUI.Models.Transaction;
 

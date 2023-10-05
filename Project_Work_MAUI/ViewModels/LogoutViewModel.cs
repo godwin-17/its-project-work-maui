@@ -17,7 +17,6 @@ namespace Project_Work_MAUI.ViewModels
             bool success = SecureStorage.Default.Remove("oauth_token");
             if (success)
             {
-                //await Application.Current.MainPage.DisplayAlert("Logged out", "LogOut effettuato con successo", "OK");
                 var toast = Toast.Make("Logged out", ToastDuration.Short, 12);
                 await toast.Show();
                 await Shell.Current.GoToAsync("//MainPage");
