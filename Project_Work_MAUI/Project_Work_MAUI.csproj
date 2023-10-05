@@ -33,10 +33,10 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiIcon Include="Resources\AppIcon\bbank_icon.svg" Color="#fff" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+		<MauiSplashScreen Include="Resources\Splash\logo.svg" Color="#fff" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -107,18 +107,12 @@
 		<MauiXaml Update="ProfilePage.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
-	  <MauiXaml Update="FiltriPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	  <MauiXaml Update="ChangePasswordPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 		<MauiXaml Update="ProfilePage.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
-	  <MauiXaml Update="FiltriPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	  <MauiXaml Update="RicaricaPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

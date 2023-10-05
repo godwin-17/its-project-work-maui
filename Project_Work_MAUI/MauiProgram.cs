@@ -48,9 +48,6 @@ namespace Project_Work_MAUI
             builder.Services.AddTransient<ChangePasswordPage>();
             builder.Services.AddTransient<ChangePasswordViewModel>();
 
-            builder.Services.AddTransient<FiltriPage>();
-            builder.Services.AddTransient<FiltriViewModel>();
-
 #if DEBUG
             builder.Logging.AddDebug();
 #endif

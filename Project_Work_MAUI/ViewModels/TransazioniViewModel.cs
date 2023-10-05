@@ -97,7 +97,6 @@ namespace Project_Work_MAUI.ViewModels
 
                     if (response.IsSuccessStatusCode)
                     {
-                        //await Application.Current.MainPage.DisplayAlert("Successo", "Transazione avvenuta con successo.", "OK");
                         var toast = Toast.Make(SelectedCategory.Category+" avvenuto con successo", ToastDuration.Short, 12);
                         await toast.Show();
                         await Shell.Current.GoToAsync("//HomePage");

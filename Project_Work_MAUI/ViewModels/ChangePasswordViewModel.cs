@@ -1,4 +1,6 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Maui.Core;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Newtonsoft.Json;
 using Project_Work_MAUI.Models;
@@ -16,8 +18,6 @@ namespace Project_Work_MAUI.ViewModels
 
         [ObservableProperty]
         string confirmNewPassword;
-
-        //ChangePasswordRequest changePassword;
 
         [RelayCommand]
         async Task TapChangePassword()
@@ -64,7 +64,10 @@ namespace Project_Work_MAUI.ViewModels
 
                     if (response.IsSuccessStatusCode)
                     {
-                        await Application.Current.MainPage.DisplayAlert("Successo", "Password cambiata con successo.", "OK");
+                        var toast = Toast.Make("Password cambiata con successo", ToastDuration.Short, 12);
+                        await toast.Show();
+                        SecureStorage.Default.Remove("oauth_token");
+                        await Shell.Current.GoToAsync("//MainPage");
                         return;
                     }
                     else if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
