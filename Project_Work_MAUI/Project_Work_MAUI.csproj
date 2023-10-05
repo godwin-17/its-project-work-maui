@@ -57,6 +57,7 @@
 	  <None Remove="Resources\Images\bg.jpg" />
 	  <None Remove="Resources\Images\bg3.jpg" />
 	  <None Remove="Resources\Images\bonifico.svg" />
+	  <None Remove="Resources\Images\flag.png" />
 	  <None Remove="Resources\Images\gradient_bg.jpg" />
 	  <None Remove="Resources\Images\homepage.svg" />
 	  <None Remove="Resources\Images\key.png" />
@@ -67,6 +68,7 @@
 	  <None Remove="Resources\Images\movimenti.svg" />
 	  <None Remove="Resources\Images\OperatoriTelefonici\fastweb_logo.svg" />
 	  <None Remove="Resources\Images\OperatoriTelefonici\ho_logo.svg" />
+	  <None Remove="Resources\Images\OperatoriTelefonici\iliad_logo.svg" />
 	  <None Remove="Resources\Images\OperatoriTelefonici\spusu_logo.svg" />
 	  <None Remove="Resources\Images\OperatoriTelefonici\tiscali_logo.svg" />
 	  <None Remove="Resources\Images\profile.svg" />
@@ -145,6 +147,11 @@
 	  <MauiImage Include="Resources\Images\OperatoriTelefonici\tiscali_logo.svg" />
 	  <MauiImage Include="Resources\Images\OperatoriTelefonici\vodafone_logo.svg" />
 	  <MauiImage Include="Resources\Images\OperatoriTelefonici\windtre_logo.svg" />
+		<MauiImage Include="Resources\Images\OperatoriTelefonici\iliad_logo.svg" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Page Include="Resources\Images\OperatoriTelefonici\iliad_logo.svg" />
 	</ItemGroup>
 
 </Project>

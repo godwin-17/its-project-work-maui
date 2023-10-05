@@ -15,8 +15,6 @@ namespace Project_Work_MAUI.ViewModels
         public MainViewModel(IDispatcher dispatcher) 
         { 
             this.dispatcher = dispatcher;
-            email = "filippo@tescaro.com";
-            password = "Filippotescaro1";
         }
 
         [ObservableProperty]

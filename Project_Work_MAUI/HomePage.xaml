@@ -19,22 +19,29 @@
                                FontSize="15"
                                HorizontalTextAlignment="End" 
                                TextColor="Black"
-                               TextDecorations="Underline"/>
+                               TextDecorations="Underline"
+                               IsVisible="false"
+                               IsEnabled="false"/>
                         <HorizontalStackLayout.GestureRecognizers>
-                            <TapGestureRecognizer  Command="{Binding TapLogoutCommand}" />
+                            <TapGestureRecognizer  Command="{Binding TapLogoutCommand}"/>
                         </HorizontalStackLayout.GestureRecognizers>
                     </HorizontalStackLayout>
 
-                    <Frame Margin="10, 40" Padding="40, 40" BorderColor="Transparent">
-                        <Frame.Background>
+                    <Border Margin="10, 40" Padding="40, 40" StrokeShape="RoundRectangle 10,10,10,10" Stroke="transparent">
+                        <Border.Shadow>
+                            <Shadow Brush="Black" Offset="20,20" Radius="40" Opacity="0.8"/>
+                        </Border.Shadow>
+                        <Border.Background>
                             <LinearGradientBrush>
                                 <GradientStop Color="#00ffff" Offset="0.1" />
                                 <GradientStop Color="lime" Offset="1.0" />
                             </LinearGradientBrush>
-                        </Frame.Background>
+                        </Border.Background>
                         <VerticalStackLayout>
-
-                            <Label Text="Conto Corrente" TextColor="#000"/>
+                            <HorizontalStackLayout>
+                                <Label Text="Conto Corrente" TextColor="#000" Padding="0,0,120,0"/>
+                                <Image Source="bbank_logo3.svg" MaximumWidthRequest="30" HorizontalOptions="End"/>
+                            </HorizontalStackLayout>
                             <HorizontalStackLayout Spacing="5">
                                 <Label Text="{Binding User.lastName}" TextColor="#000" FontSize="24" FontAttributes="Bold" />
                                 <Label Text="{Binding User.firstName}" TextColor="#000" FontSize="24" FontAttributes="Bold" />
@@ -43,7 +50,7 @@
                             <Label Text="Saldo" TextColor="#000" FontSize="16" FontAttributes="Bold" />
                             <Label Text="{Binding Balance, StringFormat='{0:N2} €'}" TextColor="#000" FontSize="45" FontAttributes="Bold" />
                         </VerticalStackLayout>
-                    </Frame>
+                    </Border>
 
 
                     <Label Text="Movimenti recenti" Margin="10" TextColor="#000" FontSize="28" FontAttributes="Bold" />
