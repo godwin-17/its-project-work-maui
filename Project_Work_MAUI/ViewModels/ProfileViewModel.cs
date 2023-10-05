@@ -18,7 +18,6 @@ namespace Project_Work_MAUI.ViewModels
             await Shell.Current.GoToAsync("ChangePasswordPage");
         }
         
-
         public async Task LoadData()
         {
             await LoadUserInfo();

@@ -1,4 +1,6 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Maui.Core;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Newtonsoft.Json;
 using Project_Work_MAUI.Models;
@@ -93,7 +95,9 @@ namespace Project_Work_MAUI.ViewModels
 
                     if (response.IsSuccessStatusCode)
                     {
-                        await Application.Current.MainPage.DisplayAlert("Successo", "Registrazione avvenuta con successo!", "OK");
+                        var toast = Toast.Make("Registrazione avvenuta con successo", ToastDuration.Short, 12);
+                        await toast.Show();
+                        await Shell.Current.GoToAsync("//MainPage");
                         return;
                     }
                     else

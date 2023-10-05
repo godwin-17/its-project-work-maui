@@ -14,9 +14,6 @@ namespace Project_Work_MAUI.ViewModels
         [ObservableProperty]
         User user;
 
-        //[ObservableProperty]
-        //string token;
-
         [ObservableProperty]
         RootTransaction transaction;
 
@@ -33,7 +30,6 @@ namespace Project_Work_MAUI.ViewModels
             bool success = SecureStorage.Default.Remove("oauth_token");
             if(success)
             {
-                //await Application.Current.MainPage.DisplayAlert("Logged out", "LogOut effettuato con successo", "OK");
                 var toast = Toast.Make("Logged out", ToastDuration.Short, 12);
                 await toast.Show();
                 await Shell.Current.GoToAsync("//MainPage");
@@ -43,12 +39,6 @@ namespace Project_Work_MAUI.ViewModels
                 await Application.Current.MainPage.DisplayAlert("LogOut Error", "Errore durante il logout, chiudere l'applicazione e riporvare", "OK");
             }
         }
-
-        public HomeViewModel()
-        {
-            //Token = TokenProvider.Token;
-        }
-
         public async Task LoadData()
         {
            await LoadBalanceData();
@@ -93,7 +83,6 @@ namespace Project_Work_MAUI.ViewModels
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    // Di default restituisce 5 movimenti
                     string apiUrl = "https://bbankapidaniel.azurewebsites.net/api/transaction/research";
 
                     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", oauthToken);
