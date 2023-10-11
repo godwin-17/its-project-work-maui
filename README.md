@@ -68,37 +68,37 @@ This application was built with:
   <details>
     <summary>Login and Registration</summary>
     <h3>Login Page</h3>
-    <img src="./screenshots/login-page.png" alt="Login Page" />
+    <img src="./screenshots/login-page.png" alt="Login Page" width="250px" />
     <h3>Registration Page</h3>
-    <img src="./screenshots/registration-page.png" alt="Registration Page" />
+    <img src="./screenshots/registration-page.png" alt="Registration Page" width="250px" />
   </details>
   
   <details>
     <summary>Homepage and Navigation Menu</summary>
     <h3>Homepage</h3>
-    <img src="./screenshots/homepage.png" alt="Homepage Page" />
+    <img src="./screenshots/homepage.png" alt="Homepage Page" width="250px" />
     <h3>Navigation Menu</h3>
-    <img src="./screenshots/navigation-menu.png" alt="Navigation Menu" />
+    <img src="./screenshots/navigation-menu.png" alt="Navigation Menu" width="250px" />
   </details>
 
   <details>
     <summary>Banking and Transactions</summary>
     <h3>Transaction Page</h3>
-    <img src="./screenshots/transaction-page.png" alt="Transaction Page" />
+    <img src="./screenshots/transaction-page.png" alt="Transaction Page" width="250px" />
     <h3>Money Transfer Page</h3>
-    <img src="./screenshots/money-transfer-page.png" alt="Money Transfer Page" />
+    <img src="./screenshots/money-transfer-page.png" alt="Money Transfer Page" width="250px" />
     <h3>Cellphone Charge Page</h3>
-    <img src="./screenshots/cellphone-charge-page.png" alt="Cellphone Charge Page" />
+    <img src="./screenshots/cellphone-charge-page.png" alt="Cellphone Charge Page" width="250px" />
     <h3>Transaction Details Page</h3>
-    <img src="./screenshots/transaction-detail.png" alt="Transaction Details Page" />
+    <img src="./screenshots/transaction-detail.png" alt="Transaction Details Page" width="250px" />
   </details>
 
   <details>
     <summary>User Profile</summary>
     <h3>Profile Page</h3>
-    <img src="./screenshots/profile-page.png" alt="Profile Page" />
+    <img src="./screenshots/profile-page.png" alt="Profile Page" width="250px" />
     <h3>Change Password Page</h3>
-    <img src="./screenshots/change-password-page.png" alt="Change Password Page" />
+    <img src="./screenshots/change-password-page.png" alt="Change Password Page" width="250px" />
   </details>
 </details>
 
