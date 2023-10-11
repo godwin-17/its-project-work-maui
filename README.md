@@ -60,9 +60,9 @@ This application was built with:
   <details>
     <summary>Icon and Splash screen</summary>
     <h3>App Icon</h3>
-    <img src="./screenshots/app-icon.png" alt="Application Icon" />
+    <img src="./screenshots/app-icon.png" alt="Application Icon" width="250px" />
     <h3>Splash Screen</h3>
-    <img src="./screenshots/app-splash.png" alt="Application Splash Screen" />
+    <img src="./screenshots/app-splash.png" alt="Application Splash Screen" width="250px" />
   </details>
 
   <details>
