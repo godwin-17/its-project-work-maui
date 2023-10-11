@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net7.0-android;net7.0-ios;net7.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks>net7.0-android33.0</TargetFrameworks>
 		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
 		<!-- <TargetFrameworks>$(TargetFrameworks);net7.0-tizen</TargetFrameworks> -->
@@ -21,7 +21,7 @@
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
-
+		<AndroidMinimumVersion>21</AndroidMinimumVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">13.1</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
@@ -33,10 +33,10 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiIcon Include="Resources\AppIcon\bbank_icon.svg" Color="#fff" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+		<MauiSplashScreen Include="Resources\Splash\logo.svg" Color="#fff" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -49,20 +49,44 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\bbank_logo2.svg" />
+	  <None Remove="Resources\Images\bbank_logo3.svg" />
+	  <None Remove="Resources\Images\bg3.jpg" />
 	  <None Remove="Resources\Images\bbank_logo.png" />
 	  <None Remove="Resources\Images\bbank_writing_logo.png" />
+	  <None Remove="Resources\Images\bg.jpg" />
+	  <None Remove="Resources\Images\bg3.jpg" />
+	  <None Remove="Resources\Images\bonifico.svg" />
+	  <None Remove="Resources\Images\flag.png" />
 	  <None Remove="Resources\Images\gradient_bg.jpg" />
+	  <None Remove="Resources\Images\homepage.svg" />
 	  <None Remove="Resources\Images\key.png" />
 	  <None Remove="Resources\Images\light_blue.jpg" />
+	  <None Remove="Resources\Images\login.svg" />
+	  <None Remove="Resources\Images\logout.svg" />
 	  <None Remove="Resources\Images\mail.png" />
+	  <None Remove="Resources\Images\movimenti.svg" />
+	  <None Remove="Resources\Images\OperatoriTelefonici\fastweb_logo.svg" />
+	  <None Remove="Resources\Images\OperatoriTelefonici\ho_logo.svg" />
+	  <None Remove="Resources\Images\OperatoriTelefonici\iliad_logo.svg" />
+	  <None Remove="Resources\Images\OperatoriTelefonici\spusu_logo.svg" />
+	  <None Remove="Resources\Images\OperatoriTelefonici\tiscali_logo.svg" />
+	  <None Remove="Resources\Images\profile.svg" />
+	  <None Remove="Resources\Images\ricarica.svg" />
+	  <None Remove="Resources\Images\tim_logo.svg" />
+	  <None Remove="Resources\Images\transactions.svg" />
 	  <None Remove="Resources\Images\user.png" />
+	  <None Remove="Resources\Images\vodafone_logo.svg" />
 	  <None Remove="Resources\Images\white.jpg" />
+	  <None Remove="Resources\Images\windtre_logo.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="CommunityToolkit.Maui" Version="5.3.0" />
+		<PackageReference Include="ClosedXML" Version="0.102.1" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="6.0.0" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.1" />
+		<PackageReference Include="CsvHelper" Version="30.0.1" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="7.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 	</ItemGroup>
@@ -77,6 +101,24 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="BonificoPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+		<MauiXaml Update="ProfilePage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+	  <MauiXaml Update="ChangePasswordPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+		<MauiXaml Update="ProfilePage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+	  <MauiXaml Update="RicaricaPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="MovimentiPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="TransazioniPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -89,6 +131,21 @@
 	  <MauiXaml Update="RegisterPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiImage Include="Resources\Images\OperatoriTelefonici\fastweb_logo.svg" />
+	  <MauiImage Include="Resources\Images\OperatoriTelefonici\ho_logo.svg" />
+	  <MauiImage Include="Resources\Images\OperatoriTelefonici\spusu_logo.svg" />
+	  <MauiImage Include="Resources\Images\OperatoriTelefonici\tim_logo.svg" />
+	  <MauiImage Include="Resources\Images\OperatoriTelefonici\tiscali_logo.svg" />
+	  <MauiImage Include="Resources\Images\OperatoriTelefonici\vodafone_logo.svg" />
+	  <MauiImage Include="Resources\Images\OperatoriTelefonici\windtre_logo.svg" />
+		<MauiImage Include="Resources\Images\OperatoriTelefonici\iliad_logo.svg" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Page Include="Resources\Images\OperatoriTelefonici\iliad_logo.svg" />
 	</ItemGroup>
 
 </Project>

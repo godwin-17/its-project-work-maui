@@ -33,8 +33,23 @@ namespace Project_Work_MAUI
             builder.Services.AddTransient<TransazioniPage>();
             builder.Services.AddTransient<TransazioniViewModel>();
 
+            builder.Services.AddTransient<BonificoPage>();
+            builder.Services.AddTransient<BonificoViewModel>();
+
+            builder.Services.AddTransient<RicaricaPage>();
+            builder.Services.AddTransient<RicaricaViewModel>();
+
+            builder.Services.AddTransient<MovimentiPage>();
+            builder.Services.AddTransient<MoviementiViewModel>();
+
+            builder.Services.AddTransient<ProfilePage>();
+            builder.Services.AddTransient<ProfileViewModel>();
+
+            builder.Services.AddTransient<ChangePasswordPage>();
+            builder.Services.AddTransient<ChangePasswordViewModel>();
+
 #if DEBUG
-		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();

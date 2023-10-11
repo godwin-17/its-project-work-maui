@@ -1,5 +1,6 @@
 using Project_Work_MAUI.Models;
 using Project_Work_MAUI.ViewModels;
+using System.Globalization;
 
 namespace Project_Work_MAUI;
 
@@ -23,4 +24,12 @@ public partial class HomePage : ContentPage
             });
         }
     }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        (BindingContext as HomeViewModel)?.LoadData();
+    }
+
+
 }
